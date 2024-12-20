@@ -18,5 +18,5 @@ resource "google_compute_instance" "vm" {
       
     }
   }
-  metadata_startup_script = var.metadata_startup_script
+  # metadata_startup_script = var.metadata_startup_script
 }

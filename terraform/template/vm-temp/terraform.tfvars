@@ -1,0 +1,8 @@
+vm_name = "jenkin-cicd-demo"
+zone = "northamerica-northeast1-a"
+image = "rhel-9"
+machine_type = "e2-medium"
+network = "jenkins-test-vpc"
+subnetwork = "jenkins-test-subnetwork"
+project_id = "vshyamkprj"
+subnetwork_project = "shyamkprj"

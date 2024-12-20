@@ -1,44 +1,24 @@
 variable "vm_name" {
-  description = "Name of the VM"
-  type        = string
+  type = string
 }
- 
 variable "machine_type" {
-  description = "Machine type for the VM"
-  type        = string
-  default     = "e2-medium"
+  type = string
 }
 variable "zone" {
-  description = "GCP zone"
-  type        = string
-  default     = "us-central1-a"
+  type = string
 }
- 
 variable "project_id" {
-  description = "GCP project ID"
-  type        = string
+  type = string
 }
- 
 variable "image" {
-  description = "Image to use for the VM"
-  type        = string
-  default     = "debian-cloud/debian-11"
+  type = string
 }
 variable "network" {
-  description = "Network to attach to the VM"
-  type        = string
-  default     = "default"
+  type = string
 }
 variable "subnetwork" {
-  description = "Subnetwork to attach to the VM"
-  type        = string
-  default     = "default"
+  type = string
 }
 variable "subnetwork_project" {
-   description = "Subnetwork to attach to the VM"
-  type         = string
-  default      = "default" 
-}
-variable "metadata_startup_script" {
-  type = any
+  type = string
 }
