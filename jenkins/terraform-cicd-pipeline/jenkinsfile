@@ -6,18 +6,17 @@ pipeline {
     }
 
     stages {
-        
         stage('Initialize Terraform') {
             steps {
-                script 
+                script {
                     dir("${TF_PATH}") {
                         // Initialize Terraform (downloads providers and sets up backend)
                         sh 'pwd'
                         sh 'terraform init'
                     }
+                }
             }
         }
-
         stage('Terraform Plan') {
             steps {
                 script {
@@ -46,7 +45,7 @@ pipeline {
                 }
             }
         }
-    }
+}
 
     post {
         always {
