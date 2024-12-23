@@ -1,0 +1,65 @@
+pipeline {
+    agent any
+
+    environment {
+        TF_PATH = "terraform/template/vm-temp"
+        GOOGLE_APPLICATION_CREDENTIALS = credentials("gcp-id")
+    }
+
+    stages {
+        stage('Initialize Terraform') {
+            steps {
+                script {
+                    dir("${TF_PATH}") {
+                        // Initialize Terraform (downloads providers and sets up backend)
+                        sh 'pwd'
+                        sh 'terraform init'
+                    }
+                }
+            }
+        }
+    stage('Terraform Plan') {
+            steps {
+                script {
+                    dir("${TF_PATH}") {
+                        // Initialize Terraform (downloads providers and sets up backend)
+                        sh 'pwd'
+                        sh 'terraform plan'
+                    }
+            }
+        }
+    }
+
+    stage('Terraform Apply') {
+            steps {
+                script{
+                  dir("${TF_PATH}") {
+                        sh 'pwd'
+                        sh 'terraform destroy -auto-approve'
+                    }
+            }
+            }
+    } 
+    stage('Post-Deployment') {
+            steps {
+                script {
+                    // Perform any post-deployment actions, such as testing the VM
+                    echo 'Deployment Complete!'
+                }
+            }
+        }
+}
+
+    post {
+        always {
+            // Clean up, run tests, or send notifications
+            echo 'Pipeline complete.'
+        }
+        success {
+            echo 'VM provisioned successfully.'
+        }
+        failure {
+            echo 'Terraform apply failed.'
+        }
+    }
+}
