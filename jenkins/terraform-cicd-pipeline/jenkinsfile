@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         TF_PATH = "terraform/template/vm-temp"
+        GOOGLE_APPLICATION_CREDENTIALS = "gcp-ID"
     }
 
     stages {
