@@ -18,27 +18,29 @@ pipeline {
                 }
             }
         }
-        stage('Terraform Plan') {
+    stage('Terraform Plan') {
             steps {
                 script {
-                    // Run terraform plan to check changes
-                    sh 'terraform plan'
-                }
+                    dir("${TF_PATH}") {
+                        // Initialize Terraform (downloads providers and sets up backend)
+                        sh 'pwd'
+                        sh 'terraform plan'
+                    }
             }
         }
+    }
 
-        stage('Terraform Apply') {
+    stage('Terraform Apply') {
             steps {
-                input message: 'Approve Terraform Apply?', ok: 'Apply'
-
-                script {
-                    // Run terraform apply to provision the resources
-                    sh 'terraform apply -auto-approve'
-                }
+                script{
+                  dir("${TF_PATH}") {
+                        sh 'pwd'
+                        sh 'terraform apply -auto-approve'
+                    }
             }
-        }
-
-        stage('Post-Deployment') {
+            }
+    } 
+    stage('Post-Deployment') {
             steps {
                 script {
                     // Perform any post-deployment actions, such as testing the VM
