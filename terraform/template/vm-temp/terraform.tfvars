@@ -1,6 +1,6 @@
 vm_name = "jenkin-cicd-demo1"
 zone = "northamerica-northeast1-a"
-image = "debian-cloud/debian-11ls"
+image = "debian-cloud"
 machine_type = "e2-medium"
 network = "jenkins-test-vpc"
 subnetwork = "jenkins-test-subnetwork"
