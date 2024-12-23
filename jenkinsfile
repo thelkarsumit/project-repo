@@ -13,9 +13,9 @@ pipeline {
                         // Initialize Terraform (downloads providers and sets up backend)
                         sh 'terraform init'
                     }
+                }
             }
         }
-
         stage('Terraform Plan') {
             steps {
                 script {
@@ -44,7 +44,7 @@ pipeline {
                 }
             }
         }
-    }
+}
 
     post {
         always {
