@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Initialize Terraform') {
             steps {
-                script 
+                script {
                     dir("${TF_PATH}") {
                         // Initialize Terraform (downloads providers and sets up backend)
                         sh 'terraform init'
