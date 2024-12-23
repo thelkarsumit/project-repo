@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        TF_PATH = "/terraform/vm-temp"
+        TF_PATH = "terraform/template/vm-temp"
     }
 
     stages {
