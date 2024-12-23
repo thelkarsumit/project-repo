@@ -1,4 +1,4 @@
-vm_name = "jenkin-cicd-demo"
+vm_name = "jenkin-cicd-demo1"
 zone = "northamerica-northeast1-a"
 image = "debian-cloud/debian-11ls"
 machine_type = "e2-medium"
