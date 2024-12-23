@@ -2,16 +2,17 @@ pipeline {
     agent any
 
     environment {
-        
+        TF_PATH = "/terraform/vm-temp"
     }
 
     stages {
         stage('Initialize Terraform') {
             steps {
-                script {
-                    // Initialize Terraform (downloads providers and sets up backend)
-                    sh 'terraform init'
-                }
+                script 
+                    dir("${TF_PATH}") {
+                        // Initialize Terraform (downloads providers and sets up backend)
+                        sh 'terraform init'
+                    }
             }
         }
 
