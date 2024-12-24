@@ -1,0 +1,112 @@
+pipeline {
+    agent any
+
+    parameters {
+        // Parameter for the directory where Terraform code resides
+        string(name: 'TERRAFORM_DIR', defaultValue: 'terraform', description: 'Directory where Terraform code is located')
+        string(name:'BUCKET_NAME', defaultValue: 'provide bucket name', description:'Bucket name where we want to store jenkins console output')
+
+        // Parameter to allow choosing Terraform commands to run (init, plan, apply)
+        booleanParam(name: 'TERRAFORM_INIT', defaultValue: true, description: 'Run terraform init')
+        booleanParam(name: 'TERRAFORM_PLAN', defaultValue: true, description: 'Run terraform plan')
+        booleanParam(name: 'TERRAFORM_APPLY', defaultValue: true, description: 'Run terraform apply')
+        booleanParam(name: 'TERRAFORM_DESTROY', defaultValue: true, description: 'Run terraform destroy')
+    }
+
+    environment {
+        GOOGLE_APPLICATION_CREDENTIALS = credentials("gcp-id") // GCP credentials
+    /*  TF_VAR_region = 'us-central1'
+        TF_VAR_zone = 'us-central1-a'
+        TF_VAR_machine_type = 'f1-micro'
+        TF_VAR_image = 'debian-11-bullseye-v20210916' */
+    }
+
+    stages {
+        stage('Terraform Init') {
+            when {
+                expression { return params.TERRAFORM_INIT }
+            }
+            steps {
+                script {
+                    // Initialize Terraform
+                    dir(params.TERRAFORM_DIR) {
+                        sh 'pwd'
+                        sh 'terraform init'
+                    }
+                }
+            }
+        }
+
+    stage('Terraform Plan') {
+            when {
+                expression { return params.TERRAFORM_PLAN }
+            }
+            steps {
+                script {
+                    // Run terraform plan
+                    dir(params.TERRAFORM_DIR) {
+                        sh 'pwd'
+                        sh 'terraform plan'
+                    }
+                }
+            }
+    }
+
+    stage('Terraform Apply') {
+            when {
+                expression { return params.TERRAFORM_APPLY }
+            }
+            steps {
+                input message: 'Approve Terraform Apply?', ok: 'Apply'
+                script {
+                    // Run terraform apply
+                    dir(params.TERRAFORM_DIR) {
+                        sh 'pwd'
+                        sh 'terraform apply -auto-approve'
+                    }
+                }
+            }
+    }
+    stage('Terraform Destroy') {
+            when {
+                expression { return params.TERRAFORM_DESTROY }
+            }
+            steps {
+                input message: 'Approve Terraform Destroy?', ok: 'Destroy'
+                script {
+                    // Run terraform destroy
+                    dir(params.TERRAFORM_DIR) {
+                        sh 'pwd'
+                        sh 'terraform destroy -auto-approve'
+                    }
+                }
+            }
+    }
+    stage('Save Console Output') {
+        steps {
+            script {
+                // Get console output and save it as a file
+                def logContent = currentBuild.rawBuild.getLog(1000).join("\n")  // Fetch last 1000 lines of console output
+                def fileName = "build-log-${BUILD_ID}.txt"  // Create unique file name using the build ID
+                writeFile(file: fileName, text: logContent)  // Write console output to a file
+                    
+                // Upload the log file to GCP Storage bucket
+                sh "gsutil cp ${fileName} gs://${params.BUCKET_NAME}/logs/${fileName}"
+            }
+        }
+    }ca
+}
+
+    post {
+        always {
+            // Clean up or notify after completion
+            echo 'Pipeline completed.'
+        }
+        success {
+            echo 'Terraform apply successful.'
+        }
+        failure {
+            echo 'Terraform apply failed.'
+        }
+    }
+}
