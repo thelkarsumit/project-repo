@@ -29,6 +29,7 @@ pipeline {
                 script {
                     // Initialize Terraform
                     dir(params.TERRAFORM_DIR) {
+                        sh 'pwd'
                         sh 'terraform init'
                     }
                 }
@@ -43,6 +44,7 @@ pipeline {
                 script {
                     // Run terraform plan
                     dir(params.TERRAFORM_DIR) {
+                        sh 'pwd'
                         sh 'terraform plan'
                     }
                 }
@@ -58,6 +60,7 @@ pipeline {
                 script {
                     // Run terraform apply
                     dir(params.TERRAFORM_DIR) {
+                        sh 'pwd'
                         sh 'terraform apply -auto-approve'
                     }
                 }
@@ -69,6 +72,7 @@ pipeline {
                 script {
                     // Fetch the VM's public IP after deployment
                     dir(params.TERRAFORM_DIR) {
+                        sh 'pwd'
                         sh 'terraform output vm_ip'
                     }
                 }
