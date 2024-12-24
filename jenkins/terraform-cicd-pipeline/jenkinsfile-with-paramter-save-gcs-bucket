@@ -94,7 +94,7 @@ pipeline {
                 sh "gsutil cp ${fileName} gs://${params.BUCKET_NAME}/logs/${fileName}"
             }
         }
-    }ca
+    }
 }
 
     post {
