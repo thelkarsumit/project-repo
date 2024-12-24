@@ -9,10 +9,11 @@ pipeline {
         booleanParam(name: 'TERRAFORM_INIT', defaultValue: true, description: 'Run terraform init')
         booleanParam(name: 'TERRAFORM_PLAN', defaultValue: true, description: 'Run terraform plan')
         booleanParam(name: 'TERRAFORM_APPLY', defaultValue: true, description: 'Run terraform apply')
+        booleanParam(name: 'TERRAFORM_DESTROY', defaultValue: true, description: 'Run terraform destroy')
     }
 
     environment {
-        GOOGLE_APPLICATION_CREDENTIALS = '/path/to/gcp-credentials.json' // GCP credentials
+        GOOGLE_APPLICATION_CREDENTIALS = 'gcp-id' // GCP credentials
      /* TF_VAR_project_id = 'your-gcp-project-id'
         TF_VAR_region = 'us-central1'
         TF_VAR_zone = 'us-central1-a'
@@ -66,7 +67,21 @@ pipeline {
                 }
             }
     }
-
+    stage('Terraform Destroy') {
+            when {
+                expression { return params.TERRAFORM_DESTROY }
+            }
+            steps {
+                input message: 'Approve Terraform Destroy?', ok: 'Destroy'
+                script {
+                    // Run terraform destroy
+                    dir(params.TERRAFORM_DIR) {
+                        sh 'pwd'
+                        sh 'terraform destroy -auto-approve'
+                    }
+                }
+            }
+    }
     stage('Post-Deployment') {
             steps {
                 script {
