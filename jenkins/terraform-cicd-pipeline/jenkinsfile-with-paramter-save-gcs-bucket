@@ -85,17 +85,19 @@ pipeline {
     stage('Save Console Output') {
         steps {
             script {
-                // Get console output and save it as a file
-                def logContent = currentBuild.rawBuild.getLog(1000).join("\n")  // Fetch last 1000 lines of console output
-                def fileName = "build-log-${BUILD_ID}.txt"  // Create unique file name using the build ID
-                writeFile(file: fileName, text: logContent)  // Write console output to a file
+                // Archive the console output as an artifact
+                def fileName = "build-log-${BUILD_ID}.txt"
+                    sh "echo '${currentBuild.rawBuild.getLog(1000).join('\n')}' > ${fileName}"
                     
+                // Archive the file to make it available as a build artifact
+                archiveArtifacts artifacts: "${fileName}", allowEmptyArchive: true
+
                 // Upload the log file to GCP Storage bucket
                 sh "gsutil cp ${fileName} gs://${params.BUCKET_NAME}/logs/${fileName}"
             }
         }
+      }
     }
-}
 
     post {
         always {
@@ -109,4 +111,5 @@ pipeline {
             echo 'Terraform apply failed.'
         }
     }
+
 }
