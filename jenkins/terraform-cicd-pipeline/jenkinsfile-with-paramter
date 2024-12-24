@@ -1,0 +1,91 @@
+pipeline {
+    agent any
+
+    parameters {
+        // Parameter for the directory where Terraform code resides
+        string(name: 'TERRAFORM_DIR', defaultValue: 'terraform', description: 'Directory where Terraform code is located')
+
+        // Parameter to allow choosing Terraform commands to run (init, plan, apply)
+        booleanParam(name: 'TERRAFORM_INIT', defaultValue: true, description: 'Run terraform init')
+        booleanParam(name: 'TERRAFORM_PLAN', defaultValue: true, description: 'Run terraform plan')
+        booleanParam(name: 'TERRAFORM_APPLY', defaultValue: true, description: 'Run terraform apply')
+    }
+
+    environment {
+        GOOGLE_APPLICATION_CREDENTIALS = '/path/to/gcp-credentials.json' // GCP credentials
+        TF_VAR_project_id = 'your-gcp-project-id'
+        TF_VAR_region = 'us-central1'
+        TF_VAR_zone = 'us-central1-a'
+        TF_VAR_machine_type = 'f1-micro'
+        TF_VAR_image = 'debian-11-bullseye-v20210916' // Example image
+    }
+
+    stages {
+        stage('Terraform Init') {
+            when {
+                expression { return params.TERRAFORM_INIT }
+            }
+            steps {
+                script {
+                    // Initialize Terraform
+                    dir(params.TERRAFORM_DIR) {
+                        sh 'terraform init'
+                    }
+                }
+            }
+        }
+
+    stage('Terraform Plan') {
+            when {
+                expression { return params.TERRAFORM_PLAN }
+            }
+            steps {
+                script {
+                    // Run terraform plan
+                    dir(params.TERRAFORM_DIR) {
+                        sh 'terraform plan'
+                    }
+                }
+            }
+    }
+
+    stage('Terraform Apply') {
+            when {
+                expression { return params.TERRAFORM_APPLY }
+            }
+            steps {
+                input message: 'Approve Terraform Apply?', ok: 'Apply'
+                script {
+                    // Run terraform apply
+                    dir(params.TERRAFORM_DIR) {
+                        sh 'terraform apply -auto-approve'
+                    }
+                }
+            }
+    }
+
+    stage('Post-Deployment') {
+            steps {
+                script {
+                    // Fetch the VM's public IP after deployment
+                    dir(params.TERRAFORM_DIR) {
+                        sh 'terraform output vm_ip'
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean up or notify after completion
+            echo 'Pipeline completed.'
+        }
+        success {
+            echo 'Terraform apply successful.'
+        }
+        failure {
+            echo 'Terraform apply failed.'
+        }
+    }
+}
