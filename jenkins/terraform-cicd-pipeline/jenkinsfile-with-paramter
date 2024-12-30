@@ -28,14 +28,12 @@ pipeline {
             }
             steps {
                 script {
-                    // Initialize Terraform
-                    dir(params.TERRAFORM_DIR) {
+                    // Initialize Terrafo             dir(params.TERRAFORM_DIR) {
                         sh 'pwd'
                         sh 'terraform init'
                     }
                 }
             }
-        }
 
     stage('Terraform Plan') {
             when {
@@ -50,7 +48,7 @@ pipeline {
                     }
                 }
             }
-    }
+        }
 
     stage('Terraform Apply') {
             when {
@@ -93,9 +91,10 @@ pipeline {
                 }
             }
         }
-    }
+}
 
     post {
+    
         always {
             // Clean up or notify after completion
             echo 'Pipeline completed.'
