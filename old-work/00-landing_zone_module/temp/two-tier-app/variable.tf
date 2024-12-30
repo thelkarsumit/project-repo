@@ -52,3 +52,6 @@ variable "network" {
 variable "target_size" {
   type = string
 }
+variable "project_id" {
+  type = string
+}

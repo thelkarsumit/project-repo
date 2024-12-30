@@ -2,6 +2,7 @@ module "vpc" {
   source = "../../module/vpc"
   vpc_name = var.vpc_name
   subnets = var.subnets
+  project_id = var.project_id
 }
 
 module "nat" {
