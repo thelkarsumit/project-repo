@@ -35,7 +35,7 @@ pipeline {
                     }
                 }
             }
-        /* stage('Terraform init-reconfigure') {
+        stage('Terraform init-reconfigure') {
             when {
                 expression { return params.TERRAFORM_INIT-reconfigure}
             }
@@ -46,7 +46,7 @@ pipeline {
                         sh 'terraform init -reconfigure'
                     }
                 }
-            } */
+            } 
     stage('Terraform Plan') {
             when {
                 expression { return params.TERRAFORM_PLAN }
