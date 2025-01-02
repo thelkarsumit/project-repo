@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
     bucket = "sumit-shyamkprj"
-    prefix = "terraform/state/mig-new"
+    prefix = "terraform/state/mig"
   }
 }
