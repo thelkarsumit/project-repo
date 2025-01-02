@@ -7,6 +7,7 @@ pipeline {
 
         // Parameter to allow choosing Terraform commands to run (init, plan, apply)
         booleanParam(name: 'TERRAFORM_INIT', defaultValue: true, description: 'Run terraform init')
+        booleanParam(name: 'TERRAFORM_INIT-reconfigure', defaultValue: true, description: 'Run terraform init -reconfigure')
         booleanParam(name: 'TERRAFORM_PLAN', defaultValue: true, description: 'Run terraform plan')
         booleanParam(name: 'TERRAFORM_APPLY', defaultValue: true, description: 'Run terraform apply')
         booleanParam(name: 'TERRAFORM_DESTROY', defaultValue: true, description: 'Run terraform destroy')
@@ -34,7 +35,18 @@ pipeline {
                     }
                 }
             }
-
+              stage('Terraform Init -reconfigure') {
+            when {
+                expression { return params.TERRAFORM_INIT-reconfigure}
+            }
+            steps {
+                script {
+                    // Initialize Terrafo             dir(params.TERRAFORM_DIR) {
+                        sh 'pwd'
+                        sh 'terraform init -reconfigure'
+                    }
+                }
+            }
     stage('Terraform Plan') {
             when {
                 expression { return params.TERRAFORM_PLAN }
