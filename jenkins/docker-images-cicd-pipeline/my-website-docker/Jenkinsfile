@@ -19,6 +19,7 @@ pipeline {
                 script {
                     // Build the Docker image
                     IMAGE_NAME = params.REGISTRY == 'GCP' ? "gcr.io/$GCP_PROJECT_ID/example-image" : "sumit329/example-image"
+                    sh "pwd"
                     sh "docker build -t ${IMAGE_NAME}:${params.IMAGE_TAG} ."
                 }
             }
