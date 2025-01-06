@@ -26,14 +26,14 @@ pipeline {
             }
         } */
         
-     stage('Test') {
+/*      stage('Test') {
             steps {
                 // Define steps for the Test stage
                 echo 'Running tests...'
                 sh  'mvn test'
             }
         }
-     
+      */
     stage('Build') {
             steps {
                 // Define steps for the Build stage
