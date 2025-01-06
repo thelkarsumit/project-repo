@@ -4,6 +4,7 @@ pipeline {
     parameters {
         choice(name: 'REGISTRY', choices: ['GCP', 'DockerHub'], description: 'Select the registry to push the image')
         string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'Tag for the Docker image (e.g., latest, 1.0.0)')
+        string(name: 'Dockerfile_DIR', defaultValue: 'jenkins/docker-images-cicd-pipeline/my-website-docker', description: 'Directory where dockerfile code is located')
     }
 
     environment {
@@ -17,10 +18,12 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    dir(params.Dockerfile_DIR) {
                     // Build the Docker image
                     IMAGE_NAME = params.REGISTRY == 'GCP' ? "gcr.io/$GCP_PROJECT_ID/example-image" : "sumit329/example-image"
                     sh "pwd"
                     sh "docker build -t ${IMAGE_NAME}:${params.IMAGE_TAG} ."
+                    }
                 }
             }
         }
