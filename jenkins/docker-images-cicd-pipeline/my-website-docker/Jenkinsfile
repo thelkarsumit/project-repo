@@ -10,8 +10,9 @@ pipeline {
     environment {
         IMAGE_NAME = ''  // Placeholder for the image name
         GCP_PROJECT_ID = 'shyamkprj' // Replace with your GCP Project ID
-        GCP_CREDENTIALS = credentials("gcp-id")  // Jenkins GCP credentials ID
-        /* DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')  // Jenkins Docker Hub credentials ID */
+        GOOGLE_APPLICATION_CREDENTIALS = credentials("gcp-id")
+        DOCKER_USER = ''
+        DOCKER_PASS = ''
     }
 
     stages {
@@ -32,14 +33,12 @@ pipeline {
             steps {
                 script {
                     if (params.REGISTRY == 'GCP') {
-                            sh 'gcloud auth activate-service-account --key-file=$GCP_CREDENTIALS'
+                            sh 'gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS'
                             sh "gcloud config set project $GCP_PROJECT_ID"
                     } 
                     else if (params.REGISTRY == 'DockerHub') {
                         // Authenticate to Docker Hub
-                        withCredentials([usernamePassword(/* credentialsId: 'dockerhub-credentials', */ usernameVariable: 'sumit329', passwordVariable: 'Sumit@1234')]) {
                             sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
-                        }
                     }
                 }
             }
