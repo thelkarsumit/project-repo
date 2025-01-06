@@ -11,6 +11,7 @@ pipeline {
         IMAGE_NAME = ''  // Placeholder for the image name
         GCP_PROJECT_ID = 'shyamkprj' // Replace with your GCP Project ID
         GCP_CREDENTIALS = credentials("gcp-id")  // Jenkins GCP credentials ID
+        GOOGLE_APPLICATION_CREDENTIALS = credentials("gcp-id")
         /* DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')  // Jenkins Docker Hub credentials ID */
     }
 
