@@ -33,7 +33,7 @@ pipeline {
                 script {
                     if (params.REGISTRY == 'GCP') {
                         // Authenticate to Google Container Registry
-                        withCredentials([file(credentialsId: 'gcp-service-account', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                        withCredentials([file(credentialsId: 'gcp-id', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
                             sh 'gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS'
                             sh "gcloud config set project $GCP_PROJECT_ID"
                         }
