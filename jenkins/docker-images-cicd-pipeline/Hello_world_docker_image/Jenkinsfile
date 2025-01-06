@@ -46,8 +46,12 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    sh 'gcloud auth activate-service-account --key-file="$GCLOUD_CREDS" '
-                    sh 'docker build -t us-central1-docker.pkg.dev/peak-axiom-426310-b1/docker-image-push-01/helloworld .'
+                    withCredentials([file(credentialsId: 'gcp-id', variable: 'KEY_FILE')]) {
+                            sh '''
+                            gcloud auth activate-service-account --key-file="$KEY_FILE"
+                            '''
+                            sh 'docker build -t us-central1-docker.pkg.dev/peak-axiom-426310-b1/docker-image-push-01/helloworld .'
+                            }
                 }
             }
         }
