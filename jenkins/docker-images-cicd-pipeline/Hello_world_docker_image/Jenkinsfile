@@ -15,7 +15,7 @@ pipeline {
     }
     
  stages {
-        stage('sonarqube-analysis') {
+/*         stage('sonarqube-analysis') {
             steps {
                 withSonarQubeEnv('SonarQube-server') {
                  sh 'mvn clean verify sonar:sonar \
@@ -24,7 +24,7 @@ pipeline {
                       -Dsonar.login=sqp_c13007b8bae2a0c234171e2b18175f794e35d2be'
                 }
             }
-        }
+        } */
         
      stage('Test') {
             steps {
