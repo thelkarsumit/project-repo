@@ -1,0 +1,79 @@
+pipeline {
+    agent any
+
+    parameters {
+        choice(name: 'REGISTRY', choices: ['GCP', 'DockerHub'], description: 'Select the registry to push the image')
+        string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'Tag for the Docker image (e.g., latest, 1.0.0)')
+    }
+
+    environment {
+        IMAGE_NAME = ''  // Placeholder for the image name
+        GCP_PROJECT_ID = 'shyamkprj' // Replace with your GCP Project ID
+        GCP_CREDENTIALS = credentials("gcp-id")  // Jenkins GCP credentials ID
+        /* DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')  // Jenkins Docker Hub credentials ID */
+    }
+
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image
+                    IMAGE_NAME = params.REGISTRY == 'GCP' ? "gcr.io/$GCP_PROJECT_ID/example-image" : "sumit329/example-image"
+                    sh "docker build -t ${IMAGE_NAME}:${params.IMAGE_TAG} ."
+                }
+            }
+        }
+
+        stage('Login to Registry') {
+            steps {
+                script {
+                    if (params.REGISTRY == 'GCP') {
+                        // Authenticate to Google Container Registry
+                        withCredentials([file(credentialsId: 'gcp-service-account', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                            sh 'gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS'
+                            sh "gcloud config set project $GCP_PROJECT_ID"
+                        }
+                    } else if (params.REGISTRY == 'DockerHub') {
+                        // Authenticate to Docker Hub
+                        withCredentials([usernamePassword(/* credentialsId: 'dockerhub-credentials', */ usernameVariable: 'sumit329', passwordVariable: 'Sumit@1234')]) {
+                            sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Push to Registry') {
+            steps {
+                script {
+                    // Push the Docker image
+                    sh "docker push ${IMAGE_NAME}:${params.IMAGE_TAG}"
+                }
+            }
+        }
+
+        stage('Post-Push Check') {
+            steps {
+                script {
+                    // Check if the image is successfully pushed by verifying the image in the registry
+                    if (params.REGISTRY == 'GCP') {
+                        // Verify GCP Container Registry image exists (this may depend on your exact setup)
+                        sh "gcloud container images list-tags ${IMAGE_NAME} --filter 'tags:${params.IMAGE_TAG}' --limit 1"
+                    } else if (params.REGISTRY == 'DockerHub') {
+                        // Verify Docker Hub image exists
+                        sh "docker pull ${IMAGE_NAME}:${params.IMAGE_TAG}"
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Image pushed successfully to ${params.REGISTRY} with tag ${params.IMAGE_TAG}."
+        }
+        failure {
+            echo "Image push failed to ${params.REGISTRY}."
+        }
+    }
+}
