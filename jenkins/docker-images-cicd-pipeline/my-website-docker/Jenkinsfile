@@ -32,12 +32,10 @@ pipeline {
             steps {
                 script {
                     if (params.REGISTRY == 'GCP') {
-                        // Authenticate to Google Container Registry
-                        withCredentials([file(credentialsId: 'gcp-service-account', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
                             sh 'gcloud auth activate-service-account --key-file=$GCP_CREDENTIALS'
                             sh "gcloud config set project $GCP_PROJECT_ID"
-                        }
-                    } else if (params.REGISTRY == 'DockerHub') {
+                    } 
+                    else if (params.REGISTRY == 'DockerHub') {
                         // Authenticate to Docker Hub
                         withCredentials([usernamePassword(/* credentialsId: 'dockerhub-credentials', */ usernameVariable: 'sumit329', passwordVariable: 'Sumit@1234')]) {
                             sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
