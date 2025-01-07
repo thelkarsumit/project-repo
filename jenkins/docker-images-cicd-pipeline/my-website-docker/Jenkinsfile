@@ -48,6 +48,8 @@ pipeline {
             steps {
                 script {
                     // Push the Docker image
+                    sh "gcloud auth configure-docker \
+                        europe-north1-docker.pkg.dev"
                     sh "docker push ${IMAGE_NAME}:${params.IMAGE_TAG}"
                 }
             }
