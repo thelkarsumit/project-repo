@@ -30,6 +30,7 @@ pipeline {
             steps {
                 // Define steps for the Test stage
                 echo 'Running tests...'
+                sh 'pwd'
                 sh  'mvn test'
             }
         }
