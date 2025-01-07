@@ -1,6 +1,10 @@
 pipeline {
     agent any
     
+    parameter {
+        string(name: 'Dockerfile_DIR', defaultValue: 'jenkins/docker-images-cicd-pipeline/Hello_world_docker_image', description: 'Directory where dockerfile code is located')
+    }
+
     environment {
         SCANNER_HOME=tool 'SonarQube-Scanner'
         PROJECT_ID='shyamkprj'
@@ -28,25 +32,30 @@ pipeline {
         
     stage('Test') {
             steps {
-                // Define steps for the Test stage
+                dir(params.Dockerfile_DIR){
                 echo 'Running tests...'
                 sh 'pwd'
                 sh  'mvn test'
             }
+          }
         }
     stage('Build') {
             steps {
+                dir(params.Dockerfile_DIR) {
                 // Define steps for the Build stage
                 echo 'Building the project...'
                 sh 'mvn clean package'
             }
         }
+        }
      
     stage('Docker Build') {
             steps {
                 script {
+                    dir(params.Dockerfile_DIR) {
                         sh 'docker build -t europe-north1-docker.pkg.dev/shyamkprj/docker-repo/helloworld .'
                         }
+                    }   
                 }
             }
     stage('Docker Push') {
