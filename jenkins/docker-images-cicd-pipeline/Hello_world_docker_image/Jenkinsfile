@@ -1,7 +1,7 @@
 pipeline {
     agent any
     
-    parameter {
+    parameters {
         string(name: 'Dockerfile_DIR', defaultValue: 'jenkins/docker-images-cicd-pipeline/Hello_world_docker_image', description: 'Directory where dockerfile code is located')
     }
 
