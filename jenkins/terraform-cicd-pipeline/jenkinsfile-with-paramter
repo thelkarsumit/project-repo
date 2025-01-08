@@ -100,10 +100,10 @@ pipeline {
             echo 'Pipeline completed.'
         }
         success {
-            echo 'Terraform apply successful.'
+            echo 'Terraform apply successful at ${TERRAFORM_DIR}'
         }
         failure {
-            echo 'Terraform apply failed.'
+            echo 'Terraform apply failed at ${TERRAFORM_DIR}'
         }
     }
 }
