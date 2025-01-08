@@ -83,7 +83,7 @@ pipeline {
                     // Fetch the VM's public IP after deployment
                     dir(params.TERRAFORM_DIR) {
                         sh 'pwd'
-                        sh 'terraform output vm_ip'
+                        sh 'terraform output'
                     }
                 }
             }
