@@ -1,0 +1,6 @@
+[webservers]
+dev-web1 ansible_host=192.168.3.10 ansible_user=developer ansible_ssh_private_key_file=~/.ssh/dev_key
+dev-web2 ansible_host=192.168.3.11 ansible_user=developer ansible_ssh_private_key_file=~/.ssh/dev_key
+
+[dbservers]
+dev-db1 ansible_host=192.168.3.20 ansible_user=developer ansible_ssh_private_key_file=~/.ssh/dev_key

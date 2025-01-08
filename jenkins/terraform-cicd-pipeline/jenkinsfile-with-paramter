@@ -28,7 +28,8 @@ pipeline {
             }
             steps {
                 script {
-                    // Initialize Terrafo             dir(params.TERRAFORM_DIR) {
+                    // Initialize Terrafo             
+                    dir(params.TERRAFORM_DIR) {
                         sh 'pwd'
                         sh 'terraform init'
                     }

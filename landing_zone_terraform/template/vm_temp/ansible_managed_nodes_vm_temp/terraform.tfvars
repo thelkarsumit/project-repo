@@ -1,18 +1,18 @@
 project_id = "shyamkprj"
 
 instances = {
-  "ansible_managed_node_1" = {
+  "ansible-managed-node-1" = {
     machine_type = "e2-medium"
-    zone         = "northamerica-northeast1"
+    zone         = "northamerica-northeast1-a"
     image        = "rhel-9"
     network      = "jenkins-test-vpc"
     subnetwork   = "jenkins-test-subnetwork"
     subnetwork_project = "shyamkprj"
     metadata_startup_script = "NA"
   }
-  "ansible_managed_node_1" = {
+  "ansible-managed-node-2" = {
     machine_type = "e2-small"
-    zone         = "northamerica-northeast1"
+    zone         = "northamerica-northeast1-a"
     image        = "debian-cloud/debian-11"
     network      = "jenkins-test-vpc"
     subnetwork   = "jenkins-test-subnetwork"

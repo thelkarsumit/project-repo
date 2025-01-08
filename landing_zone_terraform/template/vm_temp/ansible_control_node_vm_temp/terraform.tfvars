@@ -1,6 +1,6 @@
 vm_name = "ansible-control-name"
 machine_type = "e2-medium"
-zone         = "northamerica-northeast1"
+zone         = "northamerica-northeast1-a"
 project_id   = "shyamkprj"
 image        = "rhel-9"
 network      = "jenkins-test-vpc"
