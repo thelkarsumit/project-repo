@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
     bucket = "sumit-shyamkprj"
-    prefix = "terraform/state/ansible/control-node"
+    prefix = "terraform/state/ansible/managed-node"
   }
 }

@@ -8,5 +8,5 @@ module "vm" {
   network = var.network
   subnetwork = var.subnetwork
   subnetwork_project = var.subnetwork_project
-  metadata_startup_script = var.metadata_startup_script
+  metadata_startup_script = metadata_startup_script
 }
