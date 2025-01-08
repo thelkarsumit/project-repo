@@ -1,0 +1,10 @@
+# How Ansible Works
+
+Ansible is an open-source automation tool that allows you to automate IT infrastructure tasks such as configuration management, application deployment, and task execution.
+
+Key Points:
+1. Ansible uses a simple YAML-based language (Playbooks).
+2. It communicates with remote machines over SSH.
+3. It requires no agents on target machines, just SSH and Python.
+
+For more details on Ansible architecture, refer to the official documentation: https://docs.ansible.com/

@@ -1,0 +1,23 @@
+# Ansible Notes Guide
+
+This document serves as an overview of how to work with Ansible. Please refer to the individual files for detailed instructions.
+
+## 1. How Ansible Works
+Ansible is an automation tool used to manage configurations across multiple machines. It operates using a simple declarative language and relies on SSH for communication.
+
+For more detailed information, refer to: [1_how_ansible_works.txt]
+
+## 2. How to Install Ansible
+To install Ansible on your system, follow these steps based on your operating system. 
+
+For more detailed information, refer to: [2_how_to_install_ansible.txt]
+
+## 3. Git Permissions
+Before using Git to manage your configurations, ensure that you have the necessary permissions set up. This includes SSH keys and access rights to the repository.
+
+For more detailed information, refer to: [3_git_permissions.txt]
+
+## 4. Other Notes
+This section contains additional resources or advanced topics related to Ansible.
+
+For more detailed information, refer to: [4_other_notes.txt]
