@@ -1,4 +1,4 @@
 [webservers]
-dev-web1 ansible_host=34.47.44.191
-dev-web2 ansible_host=34.47.37.121
+ansible-managed-node-1 ansible_host=34.47.44.191
+ansible-managed-node-2 ansible_host=34.47.37.121
 
