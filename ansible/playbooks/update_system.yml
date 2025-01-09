@@ -1,6 +1,6 @@
 ---
 - name: Update the system based on OS
-  hosts: webservers
+  hosts: localhost
   become: yes
   tasks:
     - name: Update packages on Ubuntu
