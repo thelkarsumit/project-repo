@@ -1,0 +1,5 @@
+router_name = "test-router-module"
+region = "europe-north1"
+network = "sumit-europe-north1-vpc"
+nat_name = "test-nat-module"
+subnetwork_name = "sumit-europe-north1-subnet-1"

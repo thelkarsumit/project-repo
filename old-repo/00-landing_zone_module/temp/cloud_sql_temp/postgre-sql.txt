@@ -1,0 +1,17 @@
+instance_name       = "my-cloud-sql"
+database_version    = "POSTGRES_13"
+region              = "us-central1"
+tier                = "db-f1-micro"
+
+authorized_networks = [
+      {
+            name  = "default-network"
+                value = "0.0.0.0/0"
+      }
+]
+
+db_name   = "mydatabase"
+charset   = "UTF8"
+collation = "en_US.UTF8"
+user_name = "admin"
+password  = "securepassword"
