@@ -173,3 +173,10 @@ After making these changes, try the SSH connection again:
 ssh -i ~/.ssh/ansible_key root@34.47.37.121
 ```
 ...........................................................XXXXX......................................................
+If still its not working then follow steps
+
+1:- Make password authentication yes in /etc/ssh/sshd_config file file and restart sshd service.
+2:- Then login on managed vm form control vm using password
+3:- Once successful login , make password authentication no /etc/ssh/sshd_config file and restart sshd service.
+
+...........................................................XXXXX......................................................
