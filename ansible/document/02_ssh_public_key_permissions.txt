@@ -8,6 +8,7 @@ Summary:
 - Generate the SSH key pair on the Control VM.
 - Copy the public key (`ansible_key.pub`) to the `~/.ssh/authorized_keys` file on each Managed VM.**
 - Configure Ansible to use the private key (`ansible_key`) for SSH authentication.
+- On Both Control VM and Managed VMs needs to make changes on sshd_config file.
 - Test the connection, then run your playbook.
 
 ---------------------------------------------XXXXX---------------------------------------------------------------------------
@@ -133,7 +134,42 @@ Finally, you can run your Ansible playbook:
 ansible-playbook -i inventory.ini playbook.yml
 ```
 
-This will execute the playbook on the Managed VMs using the SSH key for authentication.
+...........................................................XXXXX......................................................
 
+On Both Control VM and Managed VMs needs to make changes on sshd_config file.
 
+1. Open the `/etc/ssh/sshd_config` file:
 
+   ```bash
+   sudo nano /etc/ssh/sshd_config
+   ```
+
+2. Find these lines:
+
+   ```bash
+   #PubkeyAuthentication yes
+   #AuthorizedKeysFile .ssh/authorized_keys
+   ```
+
+3. Remove the `#` at the beginning of these lines so they look like this:
+
+   ```bash
+   PubkeyAuthentication yes
+   AuthorizedKeysFile .ssh/authorized_keys
+   ```
+
+4. Save the file and exit (press `Ctrl+X`, then press `Y`, and hit `Enter`).
+
+5. After modifying the SSH configuration, restart the SSH service:
+
+   ```bash
+   sudo systemctl restart sshd
+   ```
+
+Test the Connection Again
+After making these changes, try the SSH connection again:
+
+```bash
+ssh -i ~/.ssh/ansible_key root@34.47.37.121
+```
+...........................................................XXXXX......................................................
