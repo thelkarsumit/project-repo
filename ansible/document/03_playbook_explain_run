@@ -1,0 +1,18 @@
+## Playbook Name: setup_webserver.yml
+
+### Purpose:
+This playbook installs and configures nginx on web server nodes 
+and ensures the service is running and enabled at boot.
+
+### Hosts Targeted:
+- Web servers (defined in the inventory file as `webservers`)
+
+### Modules Used:
+- `apt`: Used to install nginx.
+- `service`: Used to manage the nginx service (start and enable).
+- `ufw`: Used to configure firewall to allow HTTP traffic.
+
+### How to Run:
+Run the playbook with the following command:
+```bash
+ansible-playbook -i inventory_file setup_webserver.yml
