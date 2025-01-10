@@ -2,8 +2,13 @@
 - name: Update the system based on OS
   hosts: webservers
   become: yes
+  become_method: sudo  # Use 'sudo' for privilege escalation
   gather_facts: yes  # Ensure facts are gathered, if necessary
+
   tasks:
+    - name: Gather facts
+      ansible.builtin.setup:
+      
     - name: Update packages on Ubuntu
       apt:
         update_cache: yes
