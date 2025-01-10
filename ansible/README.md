@@ -24,7 +24,14 @@ ansible-repo/
 │   │   │   └── main.yml        # Tasks to create users and set permissions
 │   │   └── defaults/           # Default variable definitions for the role
 │   │       └── main.yml        # Default variables for users
-│   └── ...                     # Additional roles for other components
+│   └── webserver/
+│            ├── defaults/
+│            ├── files/
+│            ├── handlers/
+│            ├── meta/
+│            ├── tasks/
+│            ├── templates/
+│            └── vars/                    # Additional roles for other components
 ├── group_vars/                 # Variables specific to groups of hosts
 │   ├── all.yml                 # Variables applied to all hosts
 │   ├── webservers.yml          # Variables for the webserver group

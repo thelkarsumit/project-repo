@@ -1,0 +1,33 @@
+---
+- name: Install Apache on linux VM
+  hosts: managed_nodes
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+
+  tasks:
+  - name: Install Apache on ubantu os_family
+    apt:
+      name:apache2
+      state:present
+    when: ansible_os_family == 'debian'
+
+  - name: Install Apache on RHEL/Centos
+    yum: 
+      name: httpd
+      state: present
+    when: ansible_os_family == 'RHEL'
+  
+  - name: Creating changes in index.html file
+    copy:
+    content: "Hello, Install and changes make in managed_nodes and working fine"
+    dest: /var/www/html/index.html
+    notify: Apache Restart
+
+  handlers:
+      - name: Apache Restart
+        service: 
+          name: "{{ 'apache2' if ansible_facts['os_family'] == 'Debian' else 'httpd' }}"
+          state: Restart
+
+  
