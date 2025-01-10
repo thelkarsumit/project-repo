@@ -3,6 +3,7 @@
 - name: Install and configure Apache
   hosts: managed_nodes
   become: yes
+  become_method: sudo
   gather_facts: yes
   roles:
-    - apache
+    - ../roles/apache
