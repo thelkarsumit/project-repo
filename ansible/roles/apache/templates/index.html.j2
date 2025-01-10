@@ -1,0 +1,11 @@
+<!-- roles/apache/templates/index.html.j2 -->
+
+<html>
+<head>
+    <title>Welcome to Apache</title>
+</head>
+<body>
+    <h1>Hello, Apache is installed and working fine using roles!</h1>
+    <p>Changes made in {{ ansible_facts['distribution'] }} VM.</p>
+</body>
+</html>

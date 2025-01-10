@@ -1,0 +1,6 @@
+# roles/apache/handlers/main.yml
+
+- name: Apache Restart
+  service:
+    name: "{{ apache_service_name }}"
+    state: restarted
