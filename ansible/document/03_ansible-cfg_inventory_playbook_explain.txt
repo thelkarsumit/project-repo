@@ -179,3 +179,13 @@ ansible-playbook setup_webserver.yml
 ansible-playbook -i custom_inventory_file_path setup_webserver.yml
 ```
 ---------------------------------------------------------XXXXXXXXXXXX---------------------------------------------------------
+
+Testing SSH Connection via Ansible:
+
+Run a simple SSH test using Ansible to verify connectivity:
+
+'''bash
+ansible -i inventory all -m ping
+'''
+
+---------------------------------------------------------XXXXXXXXXXXX---------------------------------------------------------
