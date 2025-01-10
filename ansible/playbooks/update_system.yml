@@ -2,15 +2,25 @@
 - name: Update the system based on OS
   hosts: webservers
   become: yes
+  gather_facts: yes  # Ensure facts are gathered, if necessary
   tasks:
     - name: Update packages on Ubuntu
       apt:
         update_cache: yes
         upgrade: dist
       when: ansible_os_family == "Debian"
+      tags: 
+        - debian
 
     - name: Update packages on RHEL
       yum:
         name: '*'
         state: latest
       when: ansible_os_family == "RedHat"
+      tags:
+        - redhat
+
+    - name: Notify if no packages are updated
+      debug:
+        msg: "No packages were updated."
+      when: ansible_facts.packages | length == 0
