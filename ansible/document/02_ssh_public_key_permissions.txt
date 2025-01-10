@@ -5,6 +5,7 @@ For your Ansible setup, here's how you should handle SSH keys:
    These are the VMs where the playbooks will be executed by Ansible.
 
 Summary:
+- Need to make changes in /etc/sudoers file at suername ALL=(ALL:ALL) NOPASSWD:ALL
 - Generate the SSH key pair on the Control VM.
 - Copy the public key (`ansible_key.pub`) to the `~/.ssh/authorized_keys` file on each Managed VM.**
 - Configure Ansible to use the private key (`ansible_key`) for SSH authentication.

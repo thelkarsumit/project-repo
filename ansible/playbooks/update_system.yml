@@ -16,6 +16,7 @@
       when: ansible_os_family == "Debian"
       tags: 
         - debian
+      register: debian_update_result
 
     - name: Update packages on RHEL
       yum:
@@ -24,8 +25,18 @@
       when: ansible_os_family == "RedHat"
       tags:
         - redhat
+      register: redhat_update_result
 
-    - name: Notify if no packages are updated
+    - name: Notify if no packages were updated on Debian
       debug:
-        msg: "No packages were updated."
-      when: ansible_facts.packages | length == 0
+        msg: "No packages were updated on Debian."
+      when: ansible_os_family == "Debian" and debian_update_result.changed == false
+      tags:
+        - debian
+
+    - name: Notify if no packages were updated on RHEL
+      debug:
+        msg: "No packages were updated on RHEL."
+      when: ansible_os_family == "RedHat" and redhat_update_result.changed == false
+      tags:
+        - redhat
