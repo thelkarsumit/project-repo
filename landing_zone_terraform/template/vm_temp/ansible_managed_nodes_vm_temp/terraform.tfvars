@@ -1,7 +1,7 @@
 project_id = "shyamkprj"
 
 instances = {
-  "ansible-managed-node-1" = {
+  "sumit-ansible-managed-node" = {
     machine_type = "e2-medium"
     zone         = "northamerica-northeast1-a"
     image        = "debian-cloud/debian-11"
@@ -10,7 +10,7 @@ instances = {
     subnetwork_project = "shyamkprj"
     metadata_startup_script = "NA"
   }
-  "ansible-managed-node-2" = {
+/*   "sumit-ansible-managed-node-2" = {
     machine_type = "e2-small"
     zone         = "northamerica-northeast1-a"
     image        = "debian-cloud/debian-11"
@@ -18,6 +18,6 @@ instances = {
     subnetwork   = "jenkins-test-subnetwork"
     subnetwork_project = "shyamkprj"
     metadata_startup_script = "NA"
-  }
+  } */
 }
 
