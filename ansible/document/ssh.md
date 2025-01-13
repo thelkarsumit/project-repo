@@ -1,7 +1,4 @@
-Here is your documentation formatted in Markdown to include in your GitHub repository:
-
-```markdown
-# How to Set Up SSH for Ansible
+### How to Set Up SSH for Ansible
 
 For your Ansible setup, here's how you should handle SSH keys:
 
@@ -191,9 +188,3 @@ If you still cannot connect, follow these steps:
 2. Log in to the Managed VM from the Control VM using password authentication.
 3. Once successful, change `PasswordAuthentication no` in the `/etc/ssh/sshd_config` file and restart the `sshd` service.
 
----------------------------------------------------------
-XXXXXXXXXXXX
----------------------------------------------------------
-```
-
-This Markdown file includes all the necessary steps for setting up SSH for Ansible, including detailed instructions on key generation, configuration, and troubleshooting. Let me know if you need further adjustments!

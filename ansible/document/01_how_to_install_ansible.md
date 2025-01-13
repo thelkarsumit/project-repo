@@ -13,13 +13,13 @@ For more details on Ansible architecture, refer to the official documentation: [
 
 Ansible can be installed on various operating systems using different methods. Below are the installation steps for some common platforms:
 
-### On Ubuntu/Debian:
+- On Ubuntu/Debian:
 ```bash
 sudo apt update
 sudo apt install ansible
 
 
-### On CentOS/RHEL:
+- On CentOS/RHEL:
 '''bash
 sudo yum install epel-release
 sudo yum install ansible
