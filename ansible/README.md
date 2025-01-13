@@ -1,5 +1,12 @@
+# Ansible Repository Structure
+
+This repository contains various directories and files to manage infrastructure and automate tasks using Ansible.
+
+## Directory Structure
+
+```
 ansible-repo/
-├── inventory/                  # Directory to define diff inventory files for environments
+├── inventory/                  # Directory to define different inventory files for environments
 │   ├── production              # Inventory for production environment
 │   ├── staging                 # Inventory for staging environment
 │   └── development             # Inventory for development environment
@@ -24,14 +31,14 @@ ansible-repo/
 │   │   │   └── main.yml        # Tasks to create users and set permissions
 │   │   └── defaults/           # Default variable definitions for the role
 │   │       └── main.yml        # Default variables for users
-│   └── webserver/
-│            ├── defaults/
-│            ├── files/
-│            ├── handlers/
-│            ├── meta/
-│            ├── tasks/
-│            ├── templates/
-│            └── vars/                    # Additional roles for other components
+│   └── webserver/              # Role to manage webserver configurations
+│       ├── defaults/           # Default variables for the webserver role
+│       ├── files/              # Files to be deployed
+│       ├── handlers/           # Event handlers
+│       ├── meta/               # Metadata for the role
+│       ├── tasks/              # Tasks for the webserver role
+│       ├── templates/          # Jinja2 templates for the webserver role
+│       └── vars/               # Variables for the webserver role
 ├── group_vars/                 # Variables specific to groups of hosts
 │   ├── all.yml                 # Variables applied to all hosts
 │   ├── webservers.yml          # Variables for the webserver group
@@ -41,28 +48,56 @@ ansible-repo/
 │   └── db1.yml                 # Variables for the host 'db1'
 ├── ansible.cfg                 # Ansible configuration file
 └── README.md                   # Documentation for the repository
+```
 
+## Directory Descriptions
 
-inventory/
-Used to define hosts and their groups for different environments (e.g., production, staging, etc.).
-Add using: ansible-inventory --list -i inventory/<environment> to validate inventory.
+### `inventory/`
+This directory contains files to define hosts and their groups for different environments such as production, staging, and development.
+- To validate inventory, use the following command:
+  ```bash
+  ansible-inventory --list -i inventory/<environment>
+  ```
 
-playbooks/
-Contains playbooks for automating tasks.
-Add using: ansible-playbook playbooks/<playbook_name>.yml to execute a playbook.
+### `playbooks/`
+This directory stores Ansible playbooks for automating various tasks.
+- To execute a playbook, use the following command:
+  ```bash
+  ansible-playbook playbooks/<playbook_name>.yml
+  ```
 
-roles/
-Organizes reusable configurations, tasks, handlers, templates, etc.
-Add using: ansible-galaxy init roles/<role_name> to create a new role.
+### `roles/`
+This directory organizes reusable configurations, tasks, handlers, templates, and more into roles.
+- To create a new role, use the following command:
+  ```bash
+  ansible-galaxy init roles/<role_name>
+  ```
 
-group_vars/
-Stores variables scoped to a group of hosts.
-Add using: echo "variable_name: value" > group_vars/<group_name>.yml.
+### `group_vars/`
+This directory stores variables that are scoped to a group of hosts.
+- To add variables for a group, use the following command:
+  ```bash
+  echo "variable_name: value" > group_vars/<group_name>.yml
+  ```
 
-host_vars/
-Stores variables scoped to a specific host.
-Add using: echo "variable_name: value" > host_vars/<host_name>.yml.
+### `host_vars/`
+This directory stores variables that are specific to individual hosts.
+- To add variables for a host, use the following command:
+  ```bash
+  echo "variable_name: value" > host_vars/<host_name>.yml
+  ```
 
-ansible.cfg
-Configuration file for Ansible settings (e.g., inventory, SSH key, roles path).
-Modify using: nano ansible.cfg or equivalent text editor.
+### `ansible.cfg`
+This is the Ansible configuration file that specifies settings such as the inventory, SSH keys, roles path, etc.
+- To modify the configuration, you can edit the file using:
+  ```bash
+  nano ansible.cfg
+  ```
+
+## Setup and Usage
+
+1. Clone this repository to your local machine.
+2. Modify the `inventory/`, `group_vars/`, and `host_vars/` directories as per your environment setup.
+3. Execute playbooks using the `ansible-playbook` command.
+4. Create roles using the `ansible-galaxy init` command and customize them as per your requirements.
+
