@@ -1,25 +1,24 @@
-For your Ansible setup, here's how you should handle SSH keys:
-1. Control VM (Ansible Server): 
-   This is the machine where Ansible will run the playbooks (often called the "Ansible Control Node").
-2. Managed VMs (Target Hosts): 
-   These are the VMs where the playbooks will be executed by Ansible.
+# Ansible Setup for SSH Key-based Authentication
 
-Summary:
-- Need to make changes in /etc/sudoers file at suername ALL=(ALL:ALL) NOPASSWD:ALL
-- Generate the SSH key pair on the Control VM.
-- Copy the public key (`ansible_key.pub`) to the `~/.ssh/authorized_keys` file on each Managed VM.**
+This document outlines the steps required to set up Ansible with SSH key-based authentication for managing remote VMs. It includes the process for configuring both the Control VM (Ansible Server) and Managed VMs (Target Hosts) for secure connectivity.
+
+## Summary
+
+- Modify the `/etc/sudoers` file to include `username ALL=(ALL:ALL) NOPASSWD:ALL`.
+- Generate an SSH key pair on the Control VM.
+- Copy the public key (`ansible_key.pub`) to the `~/.ssh/authorized_keys` file on each Managed VM.
 - Configure Ansible to use the private key (`ansible_key`) for SSH authentication.
-- On Both Control VM and Managed VMs needs to make changes on sshd_config file.
-- Test the connection, then run your playbook.
+- Modify the `sshd_config` file on both the Control VM and Managed VMs.
+- Test the connection and then run the Ansible playbook.
 
----------------------------------------------XXXXX---------------------------------------------------------------------------
+## Where to Generate SSH Keys
 
-Where to Generate SSH Keys
-You will generate the SSH key pair on the Control VM.(the machine from which Ansible is run), and then use the public key to authenticate to the Managed VMs.
+You will generate the SSH key pair on the Control VM (the machine from which Ansible is run), and then use the public key to authenticate to the Managed VMs.
 
-Steps to Generate and Use the SSH Key:
+## Steps to Generate and Use the SSH Key
 
-1. Generate the SSH Key Pair on the Control VM
+### 1. Generate the SSH Key Pair on the Control VM
+
 - Open a terminal on the Control VM (where Ansible is running).
 - Run the following command to generate an SSH key pair:
 
@@ -27,19 +26,19 @@ Steps to Generate and Use the SSH Key:
   ssh-keygen -t rsa -b 2048 -f ~/.ssh/ansible_key
   ```
 
-  - This will generate two files:
-    - `~/.ssh/ansible_key` (private key)
-    - `~/.ssh/ansible_key.pub` (public key)
+  This will generate two files:
+  - `~/.ssh/ansible_key` (private key)
+  - `~/.ssh/ansible_key.pub` (public key)
 
-  - If asked for a passphrase, you can choose to leave it empty, or set one for added security.
-...........................................................XXXXX......................................................
-2. Copy the Public Key to the Managed VMs (Target Hosts)
-Now, you need to copy the public key (`~/.ssh/ansible_key.pub`) from the Control VM to the Managed VMs.
+  - You may choose to leave the passphrase empty or set one for added security.
 
-There are two ways to do this:
+### 2. Copy the Public Key to the Managed VMs (Target Hosts)
 
-Option 1: Using `ssh-copy-id`
-If you can SSH into the Managed VMs manually (with password authentication), you can use `ssh-copy-id` to automatically add the public key to the `authorized_keys` file.
+Now, you need to copy the public key (`~/.ssh/ansible_key.pub`) from the Control VM to the Managed VMs. There are two ways to do this:
+
+#### Option 1: Using `ssh-copy-id`
+
+If you can SSH into the Managed VMs manually (with password authentication), use `ssh-copy-id` to automatically add the public key to the `authorized_keys` file.
 
 Run the following command from the Control VM:
 
@@ -50,10 +49,7 @@ ssh-copy-id -i ~/.ssh/ansible_key.pub user@managed_vm_ip
 - Replace `user` with the actual username on the Managed VM (e.g., `ubuntu`, `ec2-user`).
 - Replace `managed_vm_ip` with the actual IP address of the Managed VM.
 
-This will add your public key to the `~/.ssh/authorized_keys` file on the Managed VM.
-
-Option 2: Manually Adding the Public Key.
-If `ssh-copy-id` is unavailable or you want to do it manually:
+#### Option 2: Manually Adding the Public Key
 
 1. On the Control VM, view the public key:
 
@@ -83,13 +79,13 @@ If `ssh-copy-id` is unavailable or you want to do it manually:
    chmod 700 ~/.ssh
    chmod 600 ~/.ssh/authorized_keys
    ```
-...........................................................XXXXX......................................................
-3. Configure Ansible to Use the Private Key.
-Now that the public key is copied to the Managed VMs, you need to tell Ansible to use the private key (`~/.ssh/ansible_key`) when connecting.
 
-You can do this in one of the following ways:
+### 3. Configure Ansible to Use the Private Key
 
-Option 1: Specifying the Key in Ansible Playbook.
+Now that the public key is copied to the Managed VMs, you need to configure Ansible to use the private key (`~/.ssh/ansible_key`) when connecting.
+
+#### Option 1: Specifying the Key in Ansible Playbook
+
 You can specify the private key file directly in the playbook:
 
 ```yaml
@@ -102,7 +98,8 @@ You can specify the private key file directly in the playbook:
     ansible_ssh_private_key_file: ~/.ssh/ansible_key
 ```
 
-Option 2: Using `ansible.cfg`
+#### Option 2: Using `ansible.cfg`
+
 If you don’t want to specify the key in every playbook, you can configure it globally in the `ansible.cfg` file:
 
 ```ini
@@ -112,14 +109,16 @@ private_key_file = ~/.ssh/ansible_key
 
 This will ensure Ansible uses this private key for all playbooks.
 
-Option 3: Using the `-i` Flag in the Command Line.
+#### Option 3: Using the `-i` Flag in the Command Line
+
 Alternatively, when running Ansible commands, you can specify the private key like this:
 
 ```bash
 ansible-playbook -i inventory.ini playbook.yml --private-key ~/.ssh/ansible_key
 ```
-...........................................................XXXXX......................................................
-4. Test the SSH Connection.
+
+### 4. Test the SSH Connection
+
 Before running your Ansible playbook, test the SSH connection from the Control VM to the Managed VMs:
 
 ```bash
@@ -127,19 +126,20 @@ ssh -i ~/.ssh/ansible_key user@managed_vm_ip
 ```
 
 If everything is set up correctly, you should be able to SSH into the Managed VMs without being asked for a password.
-...........................................................XXXXX......................................................
-5. Run the Ansible Playbook
+
+### 5. Run the Ansible Playbook
+
 Finally, you can run your Ansible playbook:
 
 ```bash
 ansible-playbook -i inventory.ini playbook.yml
 ```
 
-...........................................................XXXXX......................................................
+## Configuring SSH Daemon (`sshd_config`) on Both Control and Managed VMs
 
-On Both Control VM and Managed VMs needs to make changes on sshd_config file.
+You need to make sure that SSH is properly configured to allow key-based authentication on both the Control VM and Managed VMs.
 
-1. Open the `/etc/ssh/sshd_config` file:
+1. Open the `/etc/ssh/sshd_config` file on both VMs:
 
    ```bash
    sudo nano /etc/ssh/sshd_config
@@ -167,17 +167,21 @@ On Both Control VM and Managed VMs needs to make changes on sshd_config file.
    sudo systemctl restart sshd
    ```
 
-Test the Connection Again
+### Test the Connection Again
+
 After making these changes, try the SSH connection again:
 
 ```bash
-ssh -i ~/.ssh/ansible_key root@34.47.37.121
+ssh -i ~/.ssh/ansible_key root@managed_vm_ip
 ```
-...........................................................XXXXX......................................................
-If still its not working then follow steps
 
-1:- Make password authentication yes in /etc/ssh/sshd_config file file and restart sshd service.
-2:- Then login on managed vm form control vm using password
-3:- Once successful login , make password authentication no /etc/ssh/sshd_config file and restart sshd service.
+If the connection still doesn't work, follow these additional steps:
 
-...........................................................XXXXX......................................................
+1. Edit `/etc/ssh/sshd_config` and make password authentication enabled (`PasswordAuthentication yes`), then restart the SSH service.
+2. Login on the Managed VM from the Control VM using the password.
+3. Once logged in, disable password authentication again by editing `/etc/ssh/sshd_config` and setting `PasswordAuthentication no`, then restart SSH.
+
+## Conclusion
+
+Following these steps will configure your Ansible environment for SSH key-based authentication, ensuring secure and passwordless SSH access between your Control VM and Managed VMs.
+```
