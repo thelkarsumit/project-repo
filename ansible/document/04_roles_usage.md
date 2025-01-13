@@ -1,5 +1,3 @@
-Certainly! Let’s go deeper into the concept of **roles in Ansible** with a more practical and comprehensive explanation. We'll break down the why, how, and benefits step by step.
-
 ### **Why Use Roles in Ansible?**
 
 As your Ansible automation grows, you may face challenges in managing complex playbooks, especially when dealing with multiple systems, services, or configurations. Roles are designed to help address these challenges. Here’s why they’re important:

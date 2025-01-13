@@ -1,0 +1,10 @@
+# create_user_playbook.yml
+---
+- name: Create user on managed VMs
+  hosts: managed_nodes
+  become: yes
+  become_method: sudo
+  vars:
+    ansible_user: sumit
+  roles:
+    - ../roles/02_create_user

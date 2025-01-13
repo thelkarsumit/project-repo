@@ -6,9 +6,6 @@
   gather_facts: yes  # Ensure facts are gathered, if necessary
 
   tasks:
-    - name: Gather facts
-      ansible.builtin.setup:
-
     - name: Update packages on Ubuntu
       apt:
         update_cache: yes

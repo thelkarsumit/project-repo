@@ -1,0 +1,3 @@
+# roles/create_user/vars/main.yml
+---
+# You can add any other variables related to user creation, if needed
