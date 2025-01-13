@@ -5,6 +5,8 @@
   become: yes
   become_method: sudo
   vars:
-    ansible_user: sumit
+    ansible_user: thelkar_sumit
+  vars_files:
+    - ../vaults/01_create_user_vault.yml
   roles:
     - ../roles/02_create_user
