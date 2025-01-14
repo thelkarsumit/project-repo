@@ -4,6 +4,43 @@
 
 Google Kubernetes Engine (GKE) is a managed Kubernetes service provided by Google Cloud. It enables users to deploy, manage, and scale containerized applications using Kubernetes on Google Cloud's infrastructure. GKE abstracts away much of the complexity of Kubernetes, allowing developers to focus on deploying and managing their applications rather than managing the underlying infrastructure.
 
+## GKE Architecture Diagram
+
+Here is a simplified architecture diagram of GKE:
+
+```
+                         +------------------+
+                         |    Google Cloud  |
+                         |     Platform     |
+                         +------------------+
+                                 |
+                         +-----------------+
+                         |    VPC Network  |
+                         +-----------------+
+                                 |
+        +-----------------------------------------------+
+        |                   Kubernetes Cluster          |
+        |   +---------------------------------------+   |
+        |   |  Kubernetes Control Plane (Managed)   |   |
+        |   +---------------------------------------+   |
+        |   | Kubernetes Master Components          |   |
+        |   | API Server, Scheduler, Controller     |   |
+        |   | Manager, etcd                         |   |
+        |   +---------------------------------------+   |
+        |                       |                       |
+        |   +---------------------------------------+   |
+        |   | Kubernetes Worker Nodes (VMs)         |   |
+        |   |   - Pods (Containers)                 |   |
+        |   |   - Kubelet, Kube Proxy               |   |
+        |   +---------------------------------------+   |
+        |   +---------------------------------------+   |
+        |   | GKE Managed Services                  |   |
+        |   | Cloud Load Balancing, Pub/Sub,        |   |
+        |   | Cloud SQL, Stackdriver, etc.          |   |
+        |   +---------------------------------------+   |
+        +-----------------------------------------------+
+```
+
 ## Key Components of GKE Architecture
 
 The GKE architecture consists of several critical components, both at the Kubernetes layer and the underlying Google Cloud infrastructure layer. Below is an overview of the key components:
@@ -78,46 +115,6 @@ GKE also supports several add-ons that can be installed on the cluster for addit
 - **Horizontal Pod Autoscaler**: Automatically scales the number of pod replicas based on CPU or memory usage.
 - **Istio**: A service mesh that provides advanced traffic management, security, and observability features for microservices.
 - **Prometheus**: An open-source monitoring system that can be used to collect metrics from Kubernetes clusters and workloads.
-
----
-
-## GKE Architecture Diagram
-
-Here is a simplified architecture diagram of GKE:
-
-```
-                         +------------------+
-                         |    Google Cloud  |
-                         |     Platform     |
-                         +------------------+
-                                 |
-                         +---------------+
-                         |    VPC Network|
-                         +---------------+
-                                 |
-        +-----------------------------------------------+
-        |                   Kubernetes Cluster         |
-        |   +---------------------------------------+   |
-        |   |  Kubernetes Control Plane (Managed)  |   |
-        |   +---------------------------------------+   |
-        |   | Kubernetes Master Components         |   |
-        |   | API Server, Scheduler, Controller    |   |
-        |   | Manager, etcd                        |   |
-        |   +---------------------------------------+   |
-        |                       |                       |
-        |   +---------------------------------------+   |
-        |   | Kubernetes Worker Nodes (VMs)        |   |
-        |   |   - Pods (Containers)               |   |
-        |   |   - Kubelet, Kube Proxy            |   |
-        |   +---------------------------------------+   |
-        |   +---------------------------------------+   |
-        |   | GKE Managed Services                |   |
-        |   | Cloud Load Balancing, Pub/Sub,      |   |
-        |   | Cloud SQL, Stackdriver, etc.        |   |
-        |   +---------------------------------------+   |
-        +-----------------------------------------------+
-```
-
 ---
 
 ## Conclusion
@@ -125,5 +122,3 @@ Here is a simplified architecture diagram of GKE:
 GKE simplifies the management and orchestration of containerized applications using Kubernetes, all while leveraging Google Cloud’s powerful infrastructure. The architecture of GKE provides the flexibility to scale, secure, and manage complex workloads, making it an ideal platform for production-grade applications in the cloud.
 
 ---
-
-This documentation should provide a comprehensive understanding of GKE's architecture. You can always modify or expand the content as your understanding deepens or to add more specific details regarding GKE's functionality or integrations.
