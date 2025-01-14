@@ -23,5 +23,4 @@
 | 19     | 8 Jan     | 1: Started learning Ansible. <br> 2: Created an Ansible VM using Terraform and Jenkins and learned how to create multiple VMs using for-each and create a control and managed VM using it. <br> 3: Started configuring Ansible control VM.                            |
 | 20     | 9 Jan     | 1: Create Ansible VM using Jenkins, Terraform, and auto-install Ansible while creating it. <br> 2: Working on Ansible configuration. <br> 3: Trying to make a connection between control VM and managed VM and troubleshoot errors coming in this task. <br> 4: Documented all Ansible learning. |
 | 21     | 10 Jan    | 1: Create a new managed VM and try to make connectivity between control and new managed VM. <br> 2: Once connectivity is built, run Ansible playbooks on the managed VM and document troubleshooting errors for this task. <br> 3: Revise all about Ansible and try to understand how to use Ansible and Jenkins one time. |
-
-| 22     | 13 Jan    | 1: evised ansible , learn till last weak. <br> 2: Learn more about ansible roles ,vaults, playbooks.  <br> 3: documentated ansible,jenskins,  |
+| 22     | 13 Jan    | 1: Revised ansible , learn till last weak. <br> 2: Learn more about ansible roles ,vaults, playbooks. <br> 3: Documentated ansible,jenskins,docker. |
