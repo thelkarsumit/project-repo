@@ -1,4 +1,4 @@
-Here's a collection of 10 basic Dockerfile use cases to help you get started with Dockerfile writing.
+# List of basic Dockerfile use cases, along with detailed explanations.
 ---
 ## Basic Structure of a Dockerfile
 

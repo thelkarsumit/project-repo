@@ -1,4 +1,4 @@
-Here are 10 intermediate Dockerfile use cases along with detailed explanations.
+# List intermediate Dockerfile use cases, along with detailed explanations.
 
 ---
 ## Basic Structure of a Dockerfile

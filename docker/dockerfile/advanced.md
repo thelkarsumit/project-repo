@@ -1,4 +1,4 @@
-Here's a comprehensive list of 10 advanced Dockerfile use cases, along with detailed explanations.
+# list of advanced Dockerfile use cases, along with detailed explanations.
 
 ---
 ## Basic Structure of a Dockerfile
