@@ -1,5 +1,30 @@
 Here's a collection of 10 basic Dockerfile use cases to help you get started with Dockerfile writing.
+---
+## Basic Structure of a Dockerfile
 
+A Dockerfile is typically composed of several instructions, each building on the previous one. Here is the basic syntax:
+
+```Dockerfile
+# Comment
+INSTRUCTION value
+```
+
+### Key Dockerfile Instructions
+
+1. **FROM**: Specifies the base image for your Docker image. Every Dockerfile starts with this instruction.
+2. **LABEL**: Adds metadata to the image.
+3. **RUN**: Executes commands inside the container during the build process.
+4. **COPY**: Copies files from your local machine to the image.
+5. **ADD**: Similar to COPY but with additional functionality (e.g., downloading files from URLs).
+6. **WORKDIR**: Sets the working directory for subsequent instructions.
+7. **CMD**: Specifies the default command to run when the container starts.
+8. **ENTRYPOINT**: Defines the command that will always run, which can be overridden by CMD.
+9. **ENV**: Sets environment variables.
+10. **EXPOSE**: Defines the ports the container will use.
+11. **VOLUME**: Creates mount points and links them to directories on the host.
+12. **USER**: Specifies the user to use when running the container.
+
+---
 ## Table of Contents
 
 1. [01_basic_python_application.Dockerfile](#01_basic-python-applicationdockerfile)  

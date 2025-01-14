@@ -1,4 +1,4 @@
-# 03: How to Write a Dockerfile
+# How to Write a Dockerfile
 
 ## Introduction
 

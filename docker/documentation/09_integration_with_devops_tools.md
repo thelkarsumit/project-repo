@@ -1,4 +1,4 @@
-# 09. Integration with DevOps Tools
+# Integration with DevOps Tools
 
 Docker is widely used in DevOps pipelines to facilitate Continuous Integration (CI), Continuous Delivery (CD), and automation of deployment and scaling tasks. Docker's portability, consistency, and ease of use make it an ideal tool for integrating with various DevOps tools. This guide will explore how Docker can be integrated with different DevOps tools and services.
 

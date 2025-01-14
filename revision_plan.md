@@ -1,0 +1,98 @@
+# Revision Agenda
+
+## 1. 9 Dec
+- **1:** Google Cloud Storage with manual and Terraform module.
+- **2:** Storage/Database overview.
+
+## 2. 10 Dec
+- **1:** Creating VPC and 2 subnets using a single VPC module (for map/list-variable or multiple resource creation using a single module and in one-time temp running).
+- **2:** Creating Firewall Rule for SSH, IAP, and HTTPS.
+- **3:** Private VM creation and accessing this VM through CLI and IAP Desktop by applying NAT and firewall rule.
+   - vpc > router > nat > firewall rule > vm > ssh.
+
+## 3. 11 Dec
+- **1:** Revising with Vinay (Basics of networking, VPC, etc.).
+- **2:** Revising template, MIG and UMIG, load balancer.
+- **3:** Creation of MIG using console and Terraform.
+- **4:** Creation of Load balancer with console and Terraform.
+- **5:** Doc learning SQL (Understanding what topics need to learn for RHEL).
+
+## 4. 12 Dec
+- **1:** Git Learning – Revising git commands, concepts.
+- **2:** Doc work for RHEL (Start working on doc content / Completed till point no 4 (Requestable Items)).
+
+## 5. 13 Dec
+- **1:** Creating cloud SQL using console and Terraform.
+- **2:** Doc work for RHEL (Completed except Point no 8,9,10).
+
+## 6. 16 Dec
+- **1:** Discussed the document with Karan/Vinay and working on it.
+- **2:** Revise all technical things learned in the last week.
+- **3:** Revise Jenkins.
+- **4:** Work on Jenkins installation and accessing it.
+
+## 7. 17 Dec
+- **1:** Discussed the document with Amit Sir, Karan, Vinay, and working on it.
+- **2:** Started on creation of job and integrating with different tools.
+
+## 8. 18 Dec
+- **1:** Discussed the document with Karan/Vinay and almost completed.
+- **2:** Created 2-tier application with modules.
+
+## 9. 19 Dec
+- **1:** Discussed the document with Karan/Vinay and almost completed.
+- **2:** Created Jenkins server using Terraform module and metadata script and trying to access it using private VM.
+
+## 10. 20 Dec
+- **1:** Discussed the document with Karan/Vinay and completed.
+- **2:** Revise Jenkins and understand folder structure, access part, plugins, and job creation while integration with GitHub.
+
+## 11. 23 Dec
+- **1:** Learning how to create and manage GCP resources using Terraform and Jenkins, while ensuring the Git code remains up-to-date with contributions from different team members' CI/CD pipelines.
+- **2:** A Jenkins job has been created to automate the creation and destruction of a VM on GCP using Terraform and Terraform modules.
+
+## 12. 24 Dec
+- **1:** Created a Jenkins CI/CD pipeline to automate the provisioning and decommissioning of GCP resources using Terraform. 
+  - The pipeline takes parameters to define the action (create or destroy) and the path to the Terraform template. 
+  - It simplifies infrastructure management by dynamically applying or removing resources based on the given inputs.
+- **2:** Trying to store Jenkins console output to GCS bucket.
+
+## 13. 30 Dec
+- **1:** Revise all points learned till last week.
+- **2:** Start learning and working on GCP monitoring.
+
+## 14. 31 Dec
+- **1:** Revise all points learned till last week.
+- **2:** Work on GCP monitoring and trying to understand Terraform code for the same.
+
+## 15. 2 Jan
+- **1:** Revise all points learned till last week.
+- **2:** Try to understand the Terraform code, folder structure for GCP monitoring, and implement monitoring using Terraform.
+
+## 16. 3 Jan
+- **1:** Revise all points learned till last week.
+- **2:** Working on Jenkins to create different resources with the same pipeline.
+
+## 17. 6 Jan
+- **1:** Start revising Docker concept.
+- **2:** Working on Dockerfile creation and image creation using Docker.
+
+## 18. 7 Jan
+- **1:** Created a Dockerfile and using it to build a Docker image.
+- **2:** Created a Jenkins pipeline using this pipeline to create a Docker image and push it to GCP Repository.
+
+## 19. 8 Jan
+- **1:** Started learning Ansible.
+- **2:** Created an Ansible VM using Terraform and Jenkins and learned how to create multiple VMs using for-each and create a control and managed VM using it.
+- **3:** Started configuring Ansible control VM.
+
+## 20. 9 Jan
+- **1:** Create Ansible VM using Jenkins, Terraform, and auto-install Ansible while creating it.
+- **2:** Working on Ansible configuration.
+- **3:** Trying to make a connection between control VM and managed VM and troubleshoot errors coming in this task.
+- **4:** Documented all Ansible learning.
+
+## 21. 10 Jan
+- **1:** Create a new managed VM and try to make connectivity between control and new managed VM.
+- **2:** Once connectivity is built, run Ansible playbooks on the managed VM and document troubleshooting errors for this task.
+- **3:** Revise all about Ansible and try to understand how to use Ansible and Jenkins one time.

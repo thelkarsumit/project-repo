@@ -1,4 +1,4 @@
-# 05. How to Use Docker Commands
+# How to Use Docker Commands
 
 Docker commands are essential for interacting with Docker containers and images. This document explains the most commonly used Docker commands, with examples and a step-by-step guide on how to use them.
 
