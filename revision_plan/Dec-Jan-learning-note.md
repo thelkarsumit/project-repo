@@ -1,8 +1,3 @@
-You can organize your revision agenda in a markdown file like this:
-
-**File name suggestion:** `revision_agenda.md`
-
-```markdown
 # Revision Agenda
 
 ## 1. 9 Dec
@@ -105,4 +100,4 @@ You can organize your revision agenda in a markdown file like this:
 - **1:** Revised ansible , learn till last weak. 
 - **2:** Learn more about ansible roles ,vaults, playbooks. 
 - **3:** Documentated ansible,jenskins,docker. |
-```
+
