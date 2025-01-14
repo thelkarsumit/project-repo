@@ -1,30 +1,30 @@
 # Revision Agenda
 
-## 1. 9 Dec
+## 1. 9 Dec (Monday)
 - **1:** Google Cloud Storage with manual and Terraform module.
 - **2:** Storage/Database overview.
 
-## 2. 10 Dec
+## 2. 10 Dec (Tuesday)
 - **1:** Creating VPC and 2 subnets using a single VPC module (for map/list-variable or multiple resource creation using a single module and in one-time temp running).
 - **2:** Creating Firewall Rule for SSH, IAP, and HTTPS.
 - **3:** Private VM creation and accessing this VM through CLI and IAP Desktop by applying NAT and firewall rule.
    - vpc > router > nat > firewall rule > vm > ssh.
 
-## 3. 11 Dec
+## 3. 11 Dec (Wednesday)
 - **1:** Revising with Vinay (Basics of networking, VPC, etc.).
 - **2:** Revising template, MIG and UMIG, load balancer.
 - **3:** Creation of MIG using console and Terraform.
 - **4:** Creation of Load balancer with console and Terraform.
 - **5:** Doc learning SQL (Understanding what topics need to learn for RHEL).
 
-## 4. 12 Dec
+## 4. 12 Dec (Thursday)
 - **1:** Git Learning – Revising git commands, concepts.
 - **2:** Doc work for RHEL (Start working on doc content / Completed till point no 4 (Requestable Items)).
 
-## 5. 13 Dec
+## 5. 13 Dec (Friday)
 - **1:** Creating cloud SQL using console and Terraform.
 - **2:** Doc work for RHEL (Completed except Point no 8,9,10).
-
+---
 ## 6. 16 Dec
 - **1:** Discussed the document with Karan/Vinay and working on it.
 - **2:** Revise all technical things learned in the last week.
@@ -72,32 +72,48 @@
 ## 16. 3 Jan
 - **1:** Revise all points learned till last week.
 - **2:** Working on Jenkins to create different resources with the same pipeline.
-
-## 17. 6 Jan
+--- 
+## 17. 6 Jan (Monday)
 - **1:** Start revising Docker concept.
 - **2:** Working on Dockerfile creation and image creation using Docker.
 
-## 18. 7 Jan
+## 18. 7 Jan (Tuesday)
 - **1:** Created a Dockerfile and using it to build a Docker image.
 - **2:** Created a Jenkins pipeline using this pipeline to create a Docker image and push it to GCP Repository.
 
-## 19. 8 Jan
+## 19. 8 Jan (Wednesday)
 - **1:** Started learning Ansible.
 - **2:** Created an Ansible VM using Terraform and Jenkins and learned how to create multiple VMs using for-each and create a control and managed VM using it.
 - **3:** Started configuring Ansible control VM.
 
-## 20. 9 Jan
+## 20. 9 Jan (Thursday)
 - **1:** Create Ansible VM using Jenkins, Terraform, and auto-install Ansible while creating it.
 - **2:** Working on Ansible configuration.
 - **3:** Trying to make a connection between control VM and managed VM and troubleshoot errors coming in this task.
 - **4:** Documented all Ansible learning.
-
-## 21. 10 Jan
+## 21. 10 Jan (Friday )
 - **1:** Create a new managed VM and try to make connectivity between control and new managed VM.
 - **2:** Once connectivity is built, run Ansible playbooks on the managed VM and document troubleshooting errors for this task.
 - **3:** Revise all about Ansible and try to understand how to use Ansible and Jenkins one time.
-## 22. 13 Jan
+---
+## 22. 13  (Monday)
 - **1:** Revised ansible , learn till last weak. 
 - **2:** Learn more about ansible roles ,vaults, playbooks. 
-- **3:** Documentated ansible,jenskins,docker. |
-
+- **3:** Documentated ansible,jenskins,docker. 
+## 23. 14 Jan (Tuesday)
+- **1:** Revised networking,mig,umig,load balancer.
+- **2:** Revised terraform code for this topices.
+- **3:** Documentated networking,mig,umig,load balancer revision points. 
+## 24. 15 Jan (Wednesday)
+- **1:** 
+- **2:** 
+- **3:**  Documentated storage,database revision points.
+## 24. 16 Jan (Thursday)
+- **1:** 
+- **2:** 
+- **3:**  
+## 24. 17 Jan (Friday)
+- **1:** 
+- **2:** 
+- **3:**  
+---
