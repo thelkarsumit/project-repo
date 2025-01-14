@@ -1,3 +1,8 @@
+You can organize your revision agenda in a markdown file like this:
+
+**File name suggestion:** `revision_agenda.md`
+
+```markdown
 # Revision Agenda
 
 ## 1. 9 Dec
@@ -96,3 +101,8 @@
 - **1:** Create a new managed VM and try to make connectivity between control and new managed VM.
 - **2:** Once connectivity is built, run Ansible playbooks on the managed VM and document troubleshooting errors for this task.
 - **3:** Revise all about Ansible and try to understand how to use Ansible and Jenkins one time.
+## 22. 13 Jan
+- **1:** Revised ansible , learn till last weak. 
+- **2:** Learn more about ansible roles ,vaults, playbooks. 
+- **3:** Documentated ansible,jenskins,docker. |
+```
