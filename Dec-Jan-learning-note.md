@@ -16,10 +16,17 @@
 | 12     | 24 Dec    | 1: Created a Jenkins CI/CD pipeline to automate the provisioning and decommissioning of GCP resources using Terraform. <br> The pipeline takes parameters to define the action (create or destroy) and the path to the Terraform template. <br> It simplifies infrastructure management by dynamically applying or removing resources based on the given inputs. <br> 2: Trying to store Jenkins console output to GCS bucket. |
 | 13     | 30 Dec    | 1: Revise all points learned till last week. <br> 2: Start learning and working on GCP monitoring.                                                                                                                                                                                     |
 | 14     | 31 Dec    | 1: Revise all points learned till last week. <br> 2: Work on GCP monitoring and trying to understand Terraform code for the same.                                                                                                                                                   |
+
 | 15     | 2 Jan     | 1: Revise all points learned till last week. <br> 2: Try to understand the Terraform code, folder structure for GCP monitoring, and implement monitoring using Terraform.                                                                                                            |
+
 | 16     | 3 Jan     | 1: Revise all points learned till last week. <br> 2: Working on Jenkins to create different resources with the same pipeline.                                                                                                                                                         |
 | 17     | 6 Jan     | 1: Start revising Docker concept. <br> 2: Working on Dockerfile creation and image creation using Docker.                                                                                                                                                                            |
 | 18     | 7 Jan     | 1: Created a Dockerfile and using it to build a Docker image. <br> 2: Created a Jenkins pipeline using this pipeline to create a Docker image and push it to GCP Repository.                                                                                                        |
-| 19     | 8 Jan     | 1: Started learning Ansible. <br> 2: Created an Ansible VM using Terraform and Jenkins and learned how to create multiple VMs using for-each and create a control and managed VM using it. <br> 3: Started configuring Ansible control VM.                            |
+
+| 19    | 8 Jan  | 1: Started learning Ansible. <br> 2: Created an Ansible VM using Terraform and Jenkins and learned how to create multiple VMs using for-each and create a control and managed VM using it. <br> 3: Started configuring Ansible control VM.|
+
 | 20     | 9 Jan     | 1: Create Ansible VM using Jenkins, Terraform, and auto-install Ansible while creating it. <br> 2: Working on Ansible configuration. <br> 3: Trying to make a connection between control VM and managed VM and troubleshoot errors coming in this task. <br> 4: Documented all Ansible learning. |
+
 | 21     | 10 Jan    | 1: Create a new managed VM and try to make connectivity between control and new managed VM. <br> 2: Once connectivity is built, run Ansible playbooks on the managed VM and document troubleshooting errors for this task. <br> 3: Revise all about Ansible and try to understand how to use Ansible and Jenkins one time. |
+
+| 22     | 13 Jan    | 1: Revised ansible , learn till last weak. <br> 2: Learn more about ansible roles ,vaults, playbooks.  <br> 3: Documentated ansible,jenskins,docker learing on git repo.  |
