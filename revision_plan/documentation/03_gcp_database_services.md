@@ -39,6 +39,6 @@ Google Cloud offers several database services to meet different use cases, inclu
 | **Use Cases**            | Applications with structured data and complex queries | Large-scale applications with unstructured data or flexible schema |
 | **Example Databases**    | MySQL, PostgreSQL, Oracle, MS SQL Server    | MongoDB, Cassandra, CouchDB, Firebase      |
 
-![Analytical  vs Transactional Workload](./images/Structured%20or%20semi-structured%20data%20image1.png)
+![Analytical  vs Transactional Workload](../images/Structured%20or%20semi-structured%20data%20image1.png)
 
-![Dataflow in Analytical  vs Transactional Workload](./images/Structured%20or%20semi-structured%20data%20image2.png)
+![Dataflow in Analytical  vs Transactional Workload](../images/Structured%20or%20semi-structured%20data%20image2.png)
