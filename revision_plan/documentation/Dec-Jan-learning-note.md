@@ -105,9 +105,10 @@
 - **2:** Revised terraform code for this topices.
 - **3:** Documentated networking,mig,umig,load balancer revision points. 
 ## 24. 15 Jan (Wednesday)
-- **1:** 
-- **2:** 
-- **3:**  Documentated storage,database revision points.
+- **1:** Revising GKE Architecture. 
+- **2:** Revising how networking works in GKE.
+- **3:** Revising how to write Manifest file.
+- **4:** Documentated GKE Architecture,Networking in GKE,Manifest file.
 ## 24. 16 Jan (Thursday)
 - **1:** 
 - **2:** 
