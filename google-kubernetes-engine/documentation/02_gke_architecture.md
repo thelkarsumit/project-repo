@@ -5,41 +5,6 @@ Google Kubernetes Engine (GKE) is a managed Kubernetes service that simplifies d
 In this document, we will explore the architecture in detail, covering the core components of GKE, how they interact, and their roles in container management.
 ---
 ### GKE Architecture Diagram
-
-```
-                         +---------------------------------------+
-                         |         Google Cloud Platform         |
-                         |   +--------------------------------+  |
-                         |   |       Control Plane            |  |
-                         |   |    (Managed by Google)         |  |
-                         |   |   +------------------------+   |  |
-                         |   |   | Kubernetes API Server  |   |  |
-                         |   |   +------------------------+   |  |
-                         |   |   |        etcd            |   |  |
-                         |   |   +------------------------+   |  |
-                         |   |   |  Controller Manager    |   |  |
-                         |   |   +------------------------+   |  |
-                         |   |   |      Scheduler         |   |  |
-                         |   |   +------------------------+   |  |
-                         |   |   | Cloud Controller Mgr   |   |  |
-                         |   |   +------------------------+   |  |
-                         |   +--------------------------------+  |
-                         |                                       |
-                         |   +--------------------------------+  |
-                         |   |          Worker Nodes          |  |
-                         |   |   (VMs running application)    |  |
-                         |   |   +---------------------+      |  |
-                         |   |   |     Kubelet         |      |  |
-                         |   |   +---------------------+      |  |
-                         |   |   | Container Runtime   |      |  |
-                         |   |   +---------------------+      |  |
-                         |   |   |    Kube-Proxy       |      |  |
-                         |   |   +---------------------+      |  |
-                         |   +--------------------------------+  |
-                         |                                       |
-                         +---------------------------------------+
-```
----
 ```
 +----------------------------------------------------------------------------------------------------------------------------+
 |                                           Google Cloud Platform                                                            |
@@ -63,6 +28,7 @@ In this document, we will explore the architecture in detail, covering the core 
 | +-----------------------------------------------------------------------------------------------------------------------+  |  
 +----------------------------------------------------------------------------------------------------------------------------+
 ```
+---
 
 ## GKE Architecture Overview
 
