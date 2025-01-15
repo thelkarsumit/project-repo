@@ -2,9 +2,8 @@
 
 Google Kubernetes Engine (GKE) is a managed Kubernetes service that simplifies deploying, managing, and scaling containerized applications on Google Cloud. The architecture of GKE involves several key components and layers that enable container orchestration, management, and communication.
 
-In this document, we will explore the architecture in detail, covering the core components of GKE, how they interact, and their roles in container management.
 ---
-### GKE Architecture Diagram
+## GKE Architecture Diagram
 ```
 +----------------------------------------------------------------------------------------------------------------------------+
 |                                           Google Cloud Platform                                                            |
