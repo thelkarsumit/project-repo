@@ -106,7 +106,7 @@
 - **3:** Documentated networking,mig,umig,load balancer revision points. 
 ## 24. 15 Jan (Wednesday)
 - **1:** Revised basic networking and GKE Architecture. 
-- **2:** Completed labs on Security Foundation *(Course:Security & Identity Fundamentals:First 3 labs)*
+- **2:** Completed labs on Security Foundation *(Course:Security & Identity Fundamentals:First 4 labs)*
 - **4:** Documentated basic networking and GKE Architecture. 
 ## 24. 16 Jan (Thursday)
 - **1:** 
