@@ -1,5 +1,6 @@
 ---
-- name: Install required dependencies
+# Common task: Install required dependencies for Debian/Ubuntu
+- name: Install required dependencies on Debian/Ubuntu
   apt:
     name:
       - wget
@@ -7,27 +8,51 @@
       - software-properties-common
     state: present
     update_cache: yes
+  when: ansible_os_family == 'Debian'
 
-
-- name: Add Microsoft GPG key for Ubuntu
+# Add Microsoft GPG key for Debian/Ubuntu
+- name: Add Microsoft GPG key for Debian/Ubuntu
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
     state: present
+  when: ansible_os_family == 'Debian'
 
-
-- name: Add Microsoft repository for Ubuntu
+# Add Microsoft repository for Debian
+- name: Add Microsoft repository for Debian
   apt_repository:
-    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-focal-prod focal main"
+    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-10-prod buster main"
     state: present
+  when: ansible_distribution == 'Debian'
 
 
-- name: Update apt cache
+# Update apt cache
+- name: Update apt cache on Debian/Ubuntu
   apt:
     update_cache: yes
+  when: ansible_os_family == 'Debian'
 
-
-- name: Install PowerShell
+# Install PowerShell on Debian/Ubuntu
+- name: Install PowerShell on Debian/Ubuntu
   apt:
     name: powershell
     state: present
+  when: ansible_os_family == 'Debian'
+
+# Add Microsoft repository and GPG key for CentOS/RHEL
+- name: Add Microsoft GPG key and repository for CentOS/RHEL
+  yum_repository:
+    name: microsoft
+    description: Microsoft PowerShell Repo
+    baseurl: https://packages.microsoft.com/yumrepos/microsoft-rhel7-prod
+    enabled: 1
+    gpgcheck: 1
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+  when: ansible_os_family == 'RedHat'
+
+# Install PowerShell on CentOS/RHEL
+- name: Install PowerShell on CentOS/RHEL
+  yum:
+    name: powershell
+    state: present
+  when: ansible_os_family == 'RedHat'
 
