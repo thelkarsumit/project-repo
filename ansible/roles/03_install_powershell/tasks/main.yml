@@ -7,7 +7,7 @@
 
 - name: Add Microsoft repository for Ubuntu/Debian
   apt_repository:
-    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -rs)-prod $(lsb_release -cs) main"
+    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-{{ ansible_distribution_release }}-prod {{ ansible_distribution_release }} main"
     state: present
   when: ansible_os_family == 'Debian'
 
