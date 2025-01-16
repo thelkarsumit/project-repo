@@ -8,35 +8,36 @@
       - software-properties-common
     state: present
     update_cache: yes
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family == 'Debian' or ansible_distribution == 'Ubuntu'
 
 # Add Microsoft GPG key for Debian/Ubuntu
 - name: Add Microsoft GPG key for Debian/Ubuntu
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
     state: present
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family == 'Debian' or ansible_distribution == 'Ubuntu'
 
 # Add Microsoft repository for Debian
 - name: Add Microsoft repository for Debian
   apt_repository:
     repo: "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-focal-prod focal main"
     state: present
-  when: ansible_distribution == 'Debian'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
 
 
 # Update apt cache
 - name: Update apt cache on Debian/Ubuntu
   apt:
     update_cache: yes
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family == 'Debian' or ansible_distribution == 'Ubuntu'
 
 # Install PowerShell on Debian/Ubuntu
 - name: Install PowerShell on Debian/Ubuntu
   apt:
     name: powershell
     state: present
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family == 'Debian' or ansible_distribution == 'Ubuntu'
 
 # Add Microsoft repository and GPG key for CentOS/RHEL
 - name: Add Microsoft GPG key and repository for CentOS/RHEL
@@ -47,12 +48,12 @@
     enabled: 1
     gpgcheck: 1
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-  when: ansible_os_family == 'RedHat'
+  when: ansible_os_family == 'RedHat' or ansible_distribution == 'CentOS'
 
 # Install PowerShell on CentOS/RHEL
 - name: Install PowerShell on CentOS/RHEL
   yum:
     name: powershell
     state: present
-  when: ansible_os_family == 'RedHat'
+  when: ansible_os_family == 'RedHat' or ansible_distribution == 'CentOS'
 
