@@ -3,5 +3,7 @@
 - name: Install PowerShell on Linux
   hosts: all
   become: yes
+  become_method: sudo
+  gather_facts: yes
   roles:
     - ../roles/03_install_powershell
