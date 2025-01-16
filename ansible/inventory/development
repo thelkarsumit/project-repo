@@ -1,5 +1,5 @@
 [managed_nodes]
-sumit-ansible-managed-node ansible_host=34.47.7.243 ansible_user=thelkar_sumit
+sumit-ansible-managed-node ansible_host=35.203.39.132 ansible_user=thelkar_sumit
 
 [local]
 localhost ansible_connection=local
