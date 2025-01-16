@@ -7,27 +7,27 @@
       - software-properties-common
     state: present
     update_cache: yes
-  when: ansible_distribution == 'Ubuntu'
+
 
 - name: Add Microsoft GPG key for Ubuntu
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
     state: present
-  when: ansible_distribution == 'Ubuntu'
+
 
 - name: Add Microsoft repository for Ubuntu
   apt_repository:
     repo: "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-focal-prod focal main"
     state: present
-  when: ansible_distribution == 'Ubuntu'
+
 
 - name: Update apt cache
   apt:
     update_cache: yes
-  when: ansible_distribution == 'Ubuntu'
+
 
 - name: Install PowerShell
   apt:
     name: powershell
     state: present
-  when: ansible_distribution == 'Ubuntu'
+
