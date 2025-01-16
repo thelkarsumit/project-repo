@@ -1,0 +1,19 @@
+---
+- name: Add Microsoft GPG key for Debian
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+  when: ansible_distribution == 'Debian'
+
+- name: Add Microsoft repository for Debian
+  apt_repository:
+    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-10-prod buster main"
+    state: present
+  when: ansible_distribution == 'Debian'
+
+- name: Install PowerShell on Debian
+  apt:
+    name: powershell
+    state: present
+    update_cache: yes
+  when: ansible_distribution == 'Debian'
