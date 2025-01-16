@@ -17,3 +17,19 @@
     state: present
     update_cache: yes
   when: ansible_os_family == 'Debian'
+
+- name: Add Microsoft GPG key and repository for CentOS/RHEL
+  yum_repository:
+    name: microsoft
+    description: Microsoft PowerShell Repo
+    baseurl: https://packages.microsoft.com/yumrepos/microsoft-centos7-prod
+    enabled: 1
+    gpgcheck: 1
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+  when: ansible_os_family == 'RedHat'
+
+- name: Install PowerShell on CentOS/RHEL
+  yum:
+    name: powershell
+    state: present
+  when: ansible_os_family == 'RedHat'
