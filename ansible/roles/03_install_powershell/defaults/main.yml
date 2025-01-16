@@ -1,0 +1,2 @@
+# defaults/main.yml
+powershell_version: "7.2.6"
