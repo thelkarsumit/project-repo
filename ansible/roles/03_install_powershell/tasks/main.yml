@@ -1,19 +1,49 @@
 # tasks/main.yml
 ---
+- name: Check OS distribution
+  ansible.builtin.facts:
+  register: os_facts
+
+- name: Install PowerShell on Ubuntu
+  ansible.builtin.apt:
+    name: "powershell"
+    state: present
+    update_cache: yes
+  when: os_facts.ansible_distribution == "Ubuntu"
 
 - name: Install PowerShell on Debian
   ansible.builtin.apt:
     name: "powershell"
     state: present
     update_cache: yes
-    when: ansible_os_family == 'Debian'
-    
-- name: Install PowerShell on RHEL
-  when: os_facts.ansible_distribution == "RedHat"
+  when: os_facts.ansible_distribution == "Debian"
+
+- name: Install PowerShell on CentOS
   ansible.builtin.yum:
     name: "powershell"
     state: present
-    when: ansible_os_family == 'RedHat'
+  when: os_facts.ansible_distribution == "CentOS"
 
+- name: Install PowerShell on RHEL
+  ansible.builtin.yum:
+    name: "powershell"
+    state: present
+  when: os_facts.ansible_distribution == "RedHat"
 
+- name: Install PowerShell on Amazon Linux
+  ansible.builtin.yum:
+    name: "powershell"
+    state: present
+  when: os_facts.ansible_distribution == "Amazon"
 
+- name: Install PowerShell on Fedora
+  ansible.builtin.dnf:
+    name: "powershell"
+    state: present
+  when: os_facts.ansible_distribution == "Fedora"
+
+- name: Install PowerShell on SLES
+  ansible.builtin.zypper:
+    name: "powershell"
+    state: present
+  when: os_facts.ansible_distribution == "SLES"
