@@ -6,4 +6,4 @@
   become_method: sudo
   gather_facts: yes
   roles:
-    - ../roles/03_install_powershell_debian
+    - ../roles/03_install_powershell

@@ -20,7 +20,7 @@
 # Add Microsoft repository for Debian
 - name: Add Microsoft repository for Debian
   apt_repository:
-    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-10-prod buster main"
+    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-focal-prod focal main"
     state: present
   when: ansible_distribution == 'Debian'
 
