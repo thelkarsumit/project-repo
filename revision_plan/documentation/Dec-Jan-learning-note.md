@@ -109,9 +109,10 @@
 - **2:** Completed labs on Security Foundation *(Course:Security & Identity Fundamentals:First 4 labs)*
 - **4:** Documentated basic networking and GKE Architecture. 
 ## 24. 16 Jan (Thursday)
-- **1:** 
-- **2:** 
-- **3:**  
+- **1:** Completed labs on Security Foundation *(Course:Security & Identity Fundamentals:Next 3 labs)*
+- **2:** Work on Jenkins master slave architecture.
+- **3:** Started working on PowerShell commands.
+- **4:** Documentated jenkins master slave architecture and powershell working.
 ## 24. 17 Jan (Friday)
 - **1:** 
 - **2:** 
