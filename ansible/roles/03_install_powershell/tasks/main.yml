@@ -1,48 +1,49 @@
-# tasks/main.yml
 ---
 - name: Gather system facts
   ansible.builtin.setup:
+    gather_subset:
+      - "os"
 
 - name: Install PowerShell on Ubuntu
   ansible.builtin.apt:
     name: "powershell"
     state: present
     update_cache: yes
-  when: ansible_facts.ansible_distribution == "Ubuntu"
+  when: ansible_facts['ansible_distribution'] == "Ubuntu"
 
 - name: Install PowerShell on Debian
   ansible.builtin.apt:
     name: "powershell"
     state: present
     update_cache: yes
-  when: ansible_facts.ansible_distribution == "Debian"
+  when: ansible_facts['ansible_distribution'] == "Debian"
 
 - name: Install PowerShell on CentOS
   ansible.builtin.yum:
     name: "powershell"
     state: present
-  when: ansible_facts.ansible_distribution == "CentOS"
+  when: ansible_facts['ansible_distribution'] == "CentOS"
 
 - name: Install PowerShell on RHEL
   ansible.builtin.yum:
     name: "powershell"
     state: present
-  when: ansible_facts.ansible_distribution == "RedHat"
+  when: ansible_facts['ansible_distribution'] == "RedHat"
 
 - name: Install PowerShell on Amazon Linux
   ansible.builtin.yum:
     name: "powershell"
     state: present
-  when: ansible_facts.ansible_distribution == "Amazon"
+  when: ansible_facts['ansible_distribution'] == "Amazon"
 
 - name: Install PowerShell on Fedora
   ansible.builtin.dnf:
     name: "powershell"
     state: present
-  when: ansible_facts.ansible_distribution == "Fedora"
+  when: ansible_facts['ansible_distribution'] == "Fedora"
 
 - name: Install PowerShell on SLES
   ansible.builtin.zypper:
     name: "powershell"
     state: present
-  when: ansible_facts.ansible_distribution == "SLES"
+  when: ansible_facts['ansible_distribution'] == "SLES"
