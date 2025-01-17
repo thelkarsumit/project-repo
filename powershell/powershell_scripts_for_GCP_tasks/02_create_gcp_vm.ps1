@@ -22,12 +22,12 @@ Write-Host "Image Project: $imageProject"
 
 # Build gcloud command to create a VM
 $createVmCommand = @"
-gcloud compute instances create $instanceName `
-    --project=$projectId `
-    --zone=$zone `
-    --machine-type=$machineType `
-    --image-family=$imageFamily `
-    --image-project=$imageProject `
+gcloud compute instances create $instanceName \
+    --project=$projectId \
+    --zone=$zone \
+    --machine-type=$machineType \
+    --image-family=$imageFamily \
+    --image-project=$imageProject \
     --boot-disk-size=10GB
 "@
 
