@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# 02_create_gcp_vm.ps1
-=======
->>>>>>> 9b0b0f0aa8153e094958896f45168fe0ecd90052
 # This script creates a Google Cloud VM instance using the gcloud CLI.
 # Prerequisites:
 # - Google Cloud CLI (gcloud) installed
@@ -46,8 +42,3 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "VM instance '$instanceName' created successfully."
 } else {
     Write-Host "Failed to create VM instance '$instanceName'."
-}
-<<<<<<< HEAD
-
-=======
->>>>>>> 9b0b0f0aa8153e094958896f45168fe0ecd90052
