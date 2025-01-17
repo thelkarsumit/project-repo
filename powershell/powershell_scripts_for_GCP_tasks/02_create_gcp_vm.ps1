@@ -42,3 +42,4 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "VM instance '$instanceName' created successfully."
 } else {
     Write-Host "Failed to create VM instance '$instanceName'."
+}
