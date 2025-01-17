@@ -1,11 +1,10 @@
-# 02_create_gcp_vm.ps1
 # This script creates a Google Cloud VM instance using the gcloud CLI.
 # Prerequisites:
 # - Google Cloud CLI (gcloud) installed
 # - Authentication to GCP is completed
 
 # Define variables
-$projectId = "shyamkprg"              # Replace with your GCP Project ID
+$projectId = "shyamkprj"              # Replace with your GCP Project ID
 $zone = "africa-south1-a"             # Replace with your desired zone
 $instanceName = "powersheell-vm"      # Replace with your VM instance name
 $machineType = "e2-micro"             # Replace with your machine type
