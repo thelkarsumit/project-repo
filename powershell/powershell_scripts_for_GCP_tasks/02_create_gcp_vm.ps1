@@ -21,22 +21,18 @@ Write-Host "Image Family: $imageFamily"
 Write-Host "Image Project: $imageProject"
 
 # Build gcloud command to create a VM
-$createVmCommand = @"
-gcloud compute instances create $instanceName \
-    --project=$projectId \
-    --zone=$zone \
-    --machine-type=$machineType \
-    --image-family=$imageFamily \
-    --image-project=$imageProject \
-    --boot-disk-size=10GB
-"@
+$createVmCommand = "gcloud compute instances create $instanceName --project=$projectId --zone=$zone --machine-type=$machineType --image-family=$imageFamily --image-project=$imageProject --boot-disk-size=10GB"
 
-# Execute the gcloud command
+# Debugging: Display the full command that will be executed
+Write-Host "Executing the following gcloud command:"
+Write-Host $createVmCommand
+
+# Execute the gcloud command using Start-Process to avoid Invoke-Expression issues
 Write-Host "Creating VM instance '$instanceName' in project '$projectId'..."
-Invoke-Expression $createVmCommand
+$process = Start-Process -FilePath "gcloud" -ArgumentList $createVmCommand -Wait -PassThru
 
 # Check the result
-if ($LASTEXITCODE -eq 0) {
+if ($process.ExitCode -eq 0) {
     Write-Host "VM instance '$instanceName' created successfully."
 } else {
     Write-Host "Failed to create VM instance '$instanceName'."
