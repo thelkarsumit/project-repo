@@ -29,7 +29,8 @@ Write-Host $createVmCommand
 
 # Execute the gcloud command using Start-Process to avoid Invoke-Expression issues
 Write-Host "Creating VM instance '$instanceName' in project '$projectId'..."
-$process = Start-Process -FilePath "gcloud" -ArgumentList $createVmCommand -Wait -PassThru
+
+# $process = Start-Process -FilePath "gcloud" -ArgumentList $createVmCommand -Wait -PassThru
 
 # Check the result
 if ($process.ExitCode -eq 0) {
