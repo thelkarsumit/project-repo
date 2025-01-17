@@ -7,40 +7,40 @@
 #Define variable
 $projectID      = "shyamkprg"
 $zone           = "africa-south1-a"
-$instance-name  = "powersheell-vm"
+$instance       = "powersheell-vm"
 $network        = "default"
 $subnetwork     = "default"
-$machine-type   = "e2-micro" 
+$machinetype   = "e2-micro" 
 $image          = "debian-11"
 
 #Display variable value
 write-host projectID $projectID
 write-host zone $zone
-write-host instance-name $instance-name
+write-host instance-name $instance
 write-host network $network
 write-host subnetwork $subnetwork
-write-host machine-type $machine-type
+write-host machine-type $machinetype
 write-host image $image
 
 # Build gcloud command to create a VM
 $createVmCommand = @"
-gcloud compute instances create $instance-name `
+gcloud compute instances create $instance `
     --project=$projectID `
     --zone=$zone `
-    --machine-type=$machine-type `
+    --machine-type=$machinetype `
     --image-family=$image ``
     --boot-disk-size=10GB
 "@
 
 # Execute the gcloud command
-Write-Host "Creating VM instance '$instance-name' in project '$projectID'..."
+Write-Host "Creating VM instance '$instance' in project '$projectID'..."
 Invoke-Expression $createVmCommand
 
 # Check the result
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "VM instance '$instance-name' created successfully."
+    Write-Host "VM instance '$instance' created successfully."
 } else {
-    Write-Host "Failed to create VM instance '$instance-name'."
+    Write-Host "Failed to create VM instance '$instance'."
 }
 
 
