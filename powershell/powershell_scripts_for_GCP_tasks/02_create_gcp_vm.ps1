@@ -4,44 +4,40 @@
 # - Google Cloud CLI (gcloud) installed
 # - Authentication to GCP is completed
 
-#Define variable
-$projectID      = "shyamkprg"
-$zone           = "africa-south1-a"
-$instance       = "powersheell-vm"
-$network        = "default"
-$subnetwork     = "default"
-$machinetype   = "e2-micro" 
-$image          = "debian-11"
+# Define variables
+$projectId = "your-project-id"        # Replace with your GCP Project ID
+$zone = "us-central1-a"               # Replace with your desired zone
+$instanceName = "my-vm-instance"      # Replace with your VM instance name
+$machineType = "e2-micro"             # Replace with your machine type
+$imageFamily = "debian-11"            # Replace with your desired image family
+$imageProject = "debian-cloud"        # Replace with the image project
 
-#Display variable value
-write-host projectID $projectID
-write-host zone $zone
-write-host instance-name $instance
-write-host network $network
-write-host subnetwork $subnetwork
-write-host machine-type $machinetype
-write-host image $image
+# Display input variables
+Write-Host "Project ID: $projectId"
+Write-Host "Zone: $zone"
+Write-Host "Instance Name: $instanceName"
+Write-Host "Machine Type: $machineType"
+Write-Host "Image Family: $imageFamily"
+Write-Host "Image Project: $imageProject"
 
 # Build gcloud command to create a VM
 $createVmCommand = @"
-gcloud compute instances create $instance `
-    --project=$projectID `
+gcloud compute instances create $instanceName `
+    --project=$projectId `
     --zone=$zone `
-    --machine-type=$machinetype `
-    --image-family=$image ``
+    --machine-type=$machineType `
+    --image-family=$imageFamily `
+    --image-project=$imageProject `
     --boot-disk-size=10GB
 "@
 
 # Execute the gcloud command
-Write-Host "Creating VM instance '$instance' in project '$projectID'..."
+Write-Host "Creating VM instance '$instanceName' in project '$projectId'..."
 Invoke-Expression $createVmCommand
 
 # Check the result
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "VM instance '$instance' created successfully."
+    Write-Host "VM instance '$instanceName' created successfully."
 } else {
-    Write-Host "Failed to create VM instance '$instance'."
+    Write-Host "Failed to create VM instance '$instanceName'."
 }
-
-
-
