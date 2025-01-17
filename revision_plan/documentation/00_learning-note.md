@@ -115,7 +115,7 @@
 - **4:** Started working on PowerShell commands.
 - **5:** Documentated jenkins master slave architecture and powershell working.
 ## 24. 17 Jan (Friday)
-- **1:** 
-- **2:** 
-- **3:**  
+- **1:** Completed labs on Security Foundation *(Course:Security & Identity Fundamentals:Next 2 labs)* 
+- **2:** Understanding about powershell commands 
+- **3:** Documentated powershell working.
 ---
