@@ -98,7 +98,7 @@ pipeline {
             echo 'Terraform apply successful at ${TERRAFORM_DIR}'
         }
         failure {
-            echo 'Terraform apply failed at ${TERRAFORM_DIR}'
+            echo 'Terraform apply failed at '${TERRAFORM_DIR}''
         }
     }
 }
