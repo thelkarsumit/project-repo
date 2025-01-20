@@ -1,0 +1,5 @@
+{
+    "project_id": "your-project-id",  
+    "project_name": "Your GCP Project",  
+    "service_account_key": "path/to/your/service-account-key.json" 
+}
