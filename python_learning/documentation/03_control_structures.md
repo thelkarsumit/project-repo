@@ -1,6 +1,15 @@
-#### **Introduction to Control Structures**
+# Introduction to Control Structures
 Control structures in Python allow you to control the flow of execution based on certain conditions or repetitions. They are fundamental for creating decision-making logic and repeating tasks in your programs.
+---
 
+#### **Summary**
+Control structures are an essential part of Python programming. They allow you to:
+- Make decisions using conditional statements (`if`, `elif`, `else`).
+- Repeat tasks using loops (`for`, `while`).
+- Control the flow with `break`, `continue`, and `pass`.
+- Use list comprehensions to create concise loops and conditional expressions.
+
+---
 #### **1. Conditional Statements (if-else)**
 Conditional statements let you execute certain code blocks only if specific conditions are met.
 
@@ -190,14 +199,5 @@ status = "Adult" if age >= 18 else "Minor"
 print(status)
 ```
 **Output**: `Adult`
-
----
-
-#### **Summary**
-Control structures are an essential part of Python programming. They allow you to:
-- Make decisions using conditional statements (`if`, `elif`, `else`).
-- Repeat tasks using loops (`for`, `while`).
-- Control the flow with `break`, `continue`, and `pass`.
-- Use list comprehensions to create concise loops and conditional expressions.
 
 ---
