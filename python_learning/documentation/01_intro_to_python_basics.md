@@ -1,4 +1,4 @@
-# 01. Introduction to Python Basics
+# Introduction to Python Basics
 
 ## Overview
 Python is a high-level, interpreted programming language designed to be easy to read and write. It’s known for its clean syntax and ease of use, making it a great choice for beginners and professionals alike. Python is versatile, being used in various fields such as web development, data science, automation, and cloud computing.
