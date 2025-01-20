@@ -120,10 +120,10 @@
 - **3:** Documentated powershell working.
 ---
 ## 25. 20 Jan (Monday)
-- **1:** 
-- **2:** 
-- **3:** 
-## 25. 21 Jan (Tuesday)
+- **1:** Started learing about python.
+- **2:** Understand about python project folder structure.
+- **3:** Documentated python learning
+## 25. 21 Jan (Tuesday) 
 - **1:** 
 - **2:** 
 - **3:** 
