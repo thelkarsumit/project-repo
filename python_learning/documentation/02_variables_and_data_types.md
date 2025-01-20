@@ -99,13 +99,13 @@ Python allows you to perform operations on variables of various types:
 ```python
 x = 10
 y = 3
-addition = x + y   # 13
-subtraction = x - y   # 7
-multiplication = x * y   # 30
-division = x / y   # 3.333...
-modulo = x % y   # 1
-integer_division = x // y   # 3
-exponentiation = x ** y   # 1000
+addition = x + y           # 13
+subtraction = x - y        # 7
+multiplication = x * y     # 30
+division = x / y           # 3.333...
+modulo = x % y             # 1    The modulo operation returns the remainder of a division.
+integer_division = x // y  # 3    
+exponentiation = x ** y    # 1000 The exponentiation operation raises a number to the power of another number.
 ```
 
 2. **String Operations**
@@ -175,6 +175,7 @@ dict_example = {"key1": "value1", "key2": "value2"}  # Result: {'key1': 'value1'
 1. **Naming Variables**: 
    - Use descriptive variable names.
    - Follow snake_case for variable names (`my_variable`) and class names should use CamelCase (`MyClass`).
+   - Understand more about case types (https://www.freecodecamp.org/news/snake-case-vs-camel-case-vs-pascal-case-vs-kebab-case-whats-the-difference)
 
 2. **Avoid Using Reserved Keywords**: 
    - Python has reserved keywords (e.g., `if`, `else`, `for`, `class`), so don’t use them as variable names.
