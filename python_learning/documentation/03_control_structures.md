@@ -1,5 +1,6 @@
-#### **Introduction to Control Structures**
+# Introduction to Control Structures
 Control structures in Python allow you to control the flow of execution based on certain conditions or repetitions. They are fundamental for creating decision-making logic and repeating tasks in your programs.
+
 ---
 
 #### **Summary**
