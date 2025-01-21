@@ -281,15 +281,10 @@ Slicing is a powerful way to access parts of sequences such as strings, lists, a
    ```
 
 ---
-The **split() function** in Python is commonly used for splitting strings, which is a foundational concept in working with text data. It fits well in the chapter **02_variables_and_data_types.md** because it directly deals with strings as a data type. 
-
-Here's the updated content for the chapter **02_variables_and_data_types.md**, including the split function explanation and examples:
-
----
 
 #### **8. The `split()` Function**
 
-**What is `split()`?**
+The **split() function** in Python is commonly used for splitting strings, which is a foundational concept in working with text data.
 The `split()` function in Python is used to break up a string into a list of substrings based on a specified delimiter (default is a space).
 
 **Syntax**:
