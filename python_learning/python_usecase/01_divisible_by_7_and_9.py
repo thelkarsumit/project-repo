@@ -19,3 +19,12 @@ def divisible_while_loop():
 if __name__ == "__main__":
     divisible_for_loop()
     divisible_while_loop()
+
+""" Difference Between for Loop and while Loop:
+for loop:
+1: Used when you know how many times you want to execute the loop.
+2: Typically used with a counter or an iterator (e.g., a range or list).
+
+while loop:
+1: Used when you do not know how many times you want to execute the loop beforehand.
+2: It runs as long as the specified condition evaluates to True. """
