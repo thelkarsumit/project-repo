@@ -1,4 +1,4 @@
-Here is an updated and extended list of tasks that include mixed concepts like data types, slicing, and 
+# List of Tasks.
 
 | Sr No. | File Name                      | Task Details                                                                                                                                                              |
 |--------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
