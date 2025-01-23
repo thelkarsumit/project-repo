@@ -17,7 +17,8 @@ print("Hello, " + name + "!")  # Concatenating user input with a greeting messag
 # Example 2: Taking numeric input and performing arithmetic operation
 
 age = input("Enter your age: ")  # User inputs their age as a string
-age = int(age)  # Converting the string to an integer
+age = int(age)                   # Converting the string to an integer
+
 # Expected output: User will input a number representing their age
 # Example Output: "25"
 print("You will be " + str(age + 1) + " next year.")  # Output: user's age increased by 1
@@ -34,6 +35,7 @@ height = input("Enter your height in meters: ")
 height = float(height)  # Convert height to float
 # Expected output: User enters height.
 # Example Output: "1.75"
+
 bmi = weight / (height ** 2)  # Calculate BMI using the formula
 print("Your BMI is: " + str(round(bmi, 2)))  # Display BMI rounded to 2 decimal places
 # Output: "Your BMI is: 22.98" (assuming weight is "70.5" and height is "1.75")
