@@ -75,7 +75,7 @@ else:
 
 # Converting from string to integer
 str_num = "123"
-num = int(str_num)            # Convert string to integer
+num = int(str_num)                  # Convert string to integer
 print("\nString to integer:", num)  # Output: 123
 
 # Converting from integer to float
