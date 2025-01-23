@@ -60,6 +60,7 @@ while True:
         break  # Exit the loop
     else:
         print("Your favorite color is: " + color)  # Print the color entered by user
+        
 # Expected output: User will keep entering colors until they type "quit"
 # Example Output: "Your favorite color is: Blue", then "Your favorite color is: Red", and so on.
 # Finally, once "quit" is entered, it will stop.
