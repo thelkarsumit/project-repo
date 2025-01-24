@@ -124,9 +124,7 @@
 - **2:** Understand about python project folder structure.
 - **3:** Documentated python learning
 ## 25. 21 Jan (Tuesday) 
-- **1:** 
-- **2:** 
-- **3:** 
+- **1:** Leave 
 ## 25. 22 Jan (Wednesday)
 - **1:** 
 - **2:** 
