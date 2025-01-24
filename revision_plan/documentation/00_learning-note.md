@@ -124,11 +124,11 @@
 - **2:** Understand about python project folder structure.
 - **3:** Documentated python learning
 ## 25. 21 Jan (Tuesday) 
-- **1:** Leave 
+- **1:** Learn about python usecase 
+- **2:** Work on topics / usecase list creation and understanding python code.
+- **3:** Documentated python learning
 ## 25. 22 Jan (Wednesday)
-- **1:** 
-- **2:** 
-- **3:** 
+- **1:** Leave
 ## 25. 23 Jan (Thursday)
 - **1:** 
 - **2:** 
