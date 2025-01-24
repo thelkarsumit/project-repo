@@ -124,17 +124,15 @@
 - **2:** Understand about python project folder structure.
 - **3:** Documentated python learning
 ## 25. 21 Jan (Tuesday) 
-- **1:** Learn about python usecase 
-- **2:** Work on topics / usecase list creation and understanding python code.
-- **3:** Documentated python learning
+- **1:** Learn about powershell usecase. 
+- **2:** Work on topics / usecase list creation and understanding powershell code.
+- **3:** Documentated powershell learning
 ## 25. 22 Jan (Wednesday)
 - **1:** Leave
 ## 25. 23 Jan (Thursday)
-- **1:** 
-- **2:** 
-- **3:** 
+- **1:** Learn python usecase. 
+- **2:** Documentated python learning
 ## 25. 24 Jan (Friday)
-- **1:** 
-- **2:** 
-- **3:** 
+- **1:** learning more about python and powershell usecase.
+- **2:** Documentated pythonn and powershell learning
 ---
