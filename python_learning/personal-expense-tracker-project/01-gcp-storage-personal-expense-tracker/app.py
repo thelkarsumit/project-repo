@@ -1,45 +1,36 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from google.cloud import storage
-import uuid
-import json
+import os
 
 app = Flask(__name__)
-BUCKET_NAME = "sumit-shyamkprj"
 
-# Initialize GCP Storage Client
 client = storage.Client()
-
-def upload_to_bucket(data):
-    """Upload JSON data to GCP Storage bucket."""
-    bucket = client.get_bucket(BUCKET_NAME)
-    blob = bucket.blob(f"expense-{uuid.uuid4().hex}.json")
-    blob.upload_from_string(json.dumps(data), content_type="application/json")
-    return blob.public_url
+bucket_name = "sumit-shyamkprj"
+bucket = client.get_bucket(bucket_name)
 
 @app.route('/')
-def home():
+def index():
     return render_template('index.html')
 
-@app.route('/submit', methods=['POST'])
-def submit_expense():
-    if request.method == 'POST':
-        # Collect expense data from the form
-        name = request.form.get('name')
-        amount = request.form.get('amount')
-        category = request.form.get('category')
-        date = request.form.get('date')
-        
-        # Create expense dictionary
-        expense_data = {
-            "name": name,
-            "amount": amount,
-            "category": category,
-            "date": date
-        }
-        
-        # Upload to GCP Storage
-        file_url = upload_to_bucket(expense_data)
-        return f"Expense saved successfully! <a href='/'>Go back</a><br>File URL: {file_url}"
+@app.route('/add_expense', methods=['POST'])
+def add_expense():
+    try:
+        if request.method == 'POST':
+            name = request.form['name']
+            amount = request.form['amount']
+            description = request.form['description']
+            
+            # Log the form data
+            print(f"Received data: Name={name}, Amount={amount}, Description={description}")
+            
+            # Save data to GCP Storage bucket
+            blob = bucket.blob(f"{name}_{amount}.txt")
+            blob.upload_from_string(f"Name: {name}\nAmount: {amount}\nDescription: {description}")
+            
+            return redirect(url_for('index'))
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        return "Internal Server Error", 500
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=8080)
