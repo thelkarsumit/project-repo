@@ -134,5 +134,11 @@
 - **2:** Documentated python learning
 ## 25. 24 Jan (Friday)
 - **1:** learning more about python and powershell usecase.
-- **2:** Documentated pythonn and powershell learning
+
+
+
+
 ---
+
+
+    
