@@ -34,7 +34,7 @@ def submit_expense():
         amount = request.form["amount"]
 
         # GCP Storage Setup
-        bucket_name = "your-bucket-name"
+        bucket_name = "sumit-shyamkprj"
         file_name = "expenses.txt"
         data = f"Name: {name}, Amount: {amount}\n"
 
