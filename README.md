@@ -1,5 +1,5 @@
 # Project Folder Structure
-'''
+```
 ├── .git/
 │   ├── branches/
 │   ├── hooks/
@@ -839,4 +839,4 @@
 │   │   │   │   │   │   │   │   │   ├── 6.16.0/
 │   │   │   │   │   │   │   │   │   │   ├── linux_amd64/
 │   │   ├── vpc_temp/
-'''
+```
