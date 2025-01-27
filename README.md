@@ -1,7 +1,11 @@
 # Project Folder Structure
 
 ```text
+├── .gitignore
+├── README.md
 ├── ansible/
+│   ├── README.md
+│   ├── ansible.cfg
 │   ├── documentation/
 │   ├── group_vars/
 │   ├── host_vars/
@@ -170,4 +174,5 @@
 │   │   │   ├── jenkins_master_slave_temp/
 │   │   │   │   ├── .terraform/
 │   │   ├── vpc_temp/
+├── toc_generate_script.py
 ```
