@@ -1,45 +1,55 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, request, render_template, jsonify
 from google.cloud import storage
-import uuid
-import json
+import os
 
+# Flask App Initialization
 app = Flask(__name__)
-BUCKET_NAME = "sumit-shyamkprj"
 
-# Initialize GCP Storage Client
-client = storage.Client()
+# GCP Connection Test Function
+def gcp_connection_test():
+    try:
+        client = storage.Client()
+        buckets = list(client.list_buckets())
+        if buckets:
+            print(f"Connected to GCP. Buckets: {[bucket.name for bucket in buckets]}")
+        else:
+            print("Connected to GCP but no buckets found.")
+    except Exception as e:
+        print(f"Error connecting to GCP: {e}")
+        raise e
 
-def upload_to_bucket(data):
-    """Upload JSON data to GCP Storage bucket."""
-    bucket = client.get_bucket(BUCKET_NAME)
-    blob = bucket.blob(f"expense-{uuid.uuid4().hex}.json")
-    blob.upload_from_string(json.dumps(data), content_type="application/json")
-    return blob.public_url
+# Test GCP connection before starting the app
+if __name__ == "__main__":
+    gcp_connection_test()
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-@app.route('/submit', methods=['POST'])
+@app.route("/submit-expense", methods=["POST"])
 def submit_expense():
-    if request.method == 'POST':
-        # Collect expense data from the form
-        name = request.form.get('name')
-        amount = request.form.get('amount')
-        category = request.form.get('category')
-        date = request.form.get('date')
-        
-        # Create expense dictionary
-        expense_data = {
-            "name": name,
-            "amount": amount,
-            "category": category,
-            "date": date
-        }
-        
-        # Upload to GCP Storage
-        file_url = upload_to_bucket(expense_data)
-        return f"Expense saved successfully! <a href='/'>Go back</a><br>File URL: {file_url}"
+    try:
+        # Get data from the form
+        name = request.form["name"]
+        amount = request.form["amount"]
+
+        # GCP Storage Setup
+        bucket_name = "sumit-shyamkprj"
+        file_name = "expenses.txt"
+        data = f"Name: {name}, Amount: {amount}\n"
+
+        # Upload to GCP Bucket
+        client = storage.Client()
+        bucket = client.bucket(bucket_name)
+        blob = bucket.blob(file_name)
+
+        # Append data to file in GCP bucket
+        blob_data = blob.download_as_text() if blob.exists() else ""
+        blob.upload_from_string(blob_data + data)
+
+        return jsonify({"message": "Expense submitted successfully!"})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host="0.0.0.0", port=8080)
