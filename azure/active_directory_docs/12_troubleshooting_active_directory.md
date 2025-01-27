@@ -215,8 +215,4 @@ Account lockouts are common due to failed login attempts or cached credentials.
 ## Conclusion
 
 Troubleshooting Active Directory requires a methodical approach, leveraging built-in tools and logs. By following the practices outlined in this chapter, you can ensure the stability and reliability of your AD environment.
-```
-
 ---
-
-This chapter is **detailed and self-contained**. Let me know if you'd like to add more examples, diagrams, or advanced scenarios!
