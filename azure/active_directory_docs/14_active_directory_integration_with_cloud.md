@@ -131,7 +131,3 @@ Before setting up integration, ensure your environment is ready by verifying the
 By integrating **on-prem Active Directory** with **Azure Active Directory**, organizations can leverage the benefits of both environments while ensuring **secure access**, **identity management**, and **single sign-on** across on-prem and cloud resources. Whether through **Azure AD Connect**, **Azure AD DS**, or **Federation Services**, each integration method offers different advantages depending on your needs.
 
 ---
-
-This chapter provides a detailed guide for integrating on-prem AD with cloud services, ensuring that you can manage identities across hybrid environments seamlessly.
-
----
