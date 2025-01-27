@@ -1,10 +1,3 @@
-### **02_installing_and_configuring_ad.md**
-
-Below is the **detailed content** for the "Installing and Configuring Active Directory" chapter. This guide assumes a Windows Server environment and provides step-by-step instructions.
-
----
-
-```markdown
 # Installing and Configuring Active Directory
 
 This chapter provides a detailed guide to install and configure Active Directory Domain Services (AD DS) on a Windows Server. 
@@ -169,6 +162,5 @@ Get-ADDomainController -Filter *
 By completing this chapter, you now know how to install and configure Active Directory Domain Services on a Windows Server. You’ve also learned post-installation steps to verify and test the setup. Mastery of these steps is essential for building a stable and functional Active Directory environment.
 
 ---
-```
 
 This chapter provides **detailed, actionable steps** to install and configure AD, ensuring you won't need to refer to additional documents. Let me know if you'd like the next chapter or further clarifications!
