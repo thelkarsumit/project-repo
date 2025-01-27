@@ -30,7 +30,7 @@
 ├── argo-cd/
 │   ├── documentation/
 ├── azure/
-│   ├── Active_Directory_Docs/
+│   ├── active_directory_docs/
 │   ├── azure-monitoring/
 │   │   ├── AM-Code-Learning/
 │   │   │   ├── Dev Subscription/
