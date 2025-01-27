@@ -1,4 +1,4 @@
-# Chapter 3: AD Structures and Hierarchies
+# AD Structures and Hierarchies
 
 ## **Overview**
 Active Directory (AD) structures are the foundation for organizing, managing, and controlling access to resources in a networked environment. AD is composed of **logical** and **physical** components that work together to create a secure and scalable directory service.
@@ -10,10 +10,10 @@ In this chapter, we will explore:
 
 ---
 
-## **3.1 Logical Structures in Active Directory**
+## ** Logical Structures in Active Directory**
 Logical structures in AD are used to group, organize, and manage network objects such as users, computers, and resources. They include:
 
-### **3.1.1 Forest**
+### ** Forest**
 - **Definition**: The **forest** is the topmost container in an AD hierarchy and serves as the security boundary. It contains one or more domains that share:
   - A common schema
   - Global catalog
@@ -25,7 +25,7 @@ Logical structures in AD are used to group, organize, and manage network objects
 
 ---
 
-### **3.1.2 Domain**
+### ** Domain**
 - **Definition**: A **domain** is a logical grouping of network objects (users, computers, groups, etc.) that:
   - Shares a common database (domain database).
   - Has its own security policies and settings.
@@ -36,7 +36,7 @@ Logical structures in AD are used to group, organize, and manage network objects
 
 ---
 
-### **3.1.3 Organizational Unit (OU)**
+### ** Organizational Unit (OU)**
 - **Definition**: An **Organizational Unit (OU)** is a container used to organize objects within a domain.
 - **Key Features**:
   - OUs allow for **delegated administration**. For example, IT staff can be assigned to manage only the "HR OU."
@@ -47,7 +47,7 @@ Logical structures in AD are used to group, organize, and manage network objects
 
 ---
 
-### **3.1.4 Global Catalog (GC)**
+### ** Global Catalog (GC)**
 - **Definition**: The **Global Catalog** is a special database that contains a searchable, partial copy of all objects in the forest.
 - **Key Features**:
   - Helps users and applications locate objects in other domains.
@@ -56,10 +56,10 @@ Logical structures in AD are used to group, organize, and manage network objects
 
 ---
 
-## **3.2 Physical Structures in Active Directory**
+## ** Physical Structures in Active Directory**
 Physical structures are essential for optimizing replication and managing network resources based on physical locations. They include:
 
-### **3.2.1 Sites**
+### ** Sites**
 - **Definition**: A **site** represents a **physical location** with a well-connected network (e.g., a branch office).
 - **Key Features**:
   - Sites help optimize **replication** traffic by grouping domain controllers based on their physical proximity.
@@ -69,7 +69,7 @@ Physical structures are essential for optimizing replication and managing networ
 
 ---
 
-### **3.2.2 Subnets**
+### ** Subnets**
 - **Definition**: A **subnet** is a range of IP addresses associated with a site.
 - **Key Features**:
   - Subnets map IP ranges to physical sites.
@@ -78,7 +78,7 @@ Physical structures are essential for optimizing replication and managing networ
 
 ---
 
-### **3.2.3 Domain Controllers (DCs)**
+### ** Domain Controllers (DCs)**
 - **Definition**: A **Domain Controller (DC)** is a server that hosts the AD database and responds to authentication and directory requests.
 - **Key Features**:
   - Every domain must have at least one DC.
@@ -89,7 +89,7 @@ Physical structures are essential for optimizing replication and managing networ
 
 ---
 
-## **3.3 Best Practices for Managing AD Structures**
+## ** Best Practices for Managing AD Structures**
 1. **Logical Design**:
    - Plan domains and OUs based on business requirements.
    - Use descriptive names for domains and OUs.
@@ -105,7 +105,7 @@ Physical structures are essential for optimizing replication and managing networ
 
 ---
 
-## **3.4 Summary**
+## ** Summary**
 Active Directory structures, both logical and physical, are the backbone of a well-organized directory service. Understanding how forests, domains, OUs, and sites work together allows administrators to design and maintain scalable, efficient, and secure AD environments.
 
 ### **Key Takeaways**:
@@ -119,3 +119,82 @@ Active Directory structures, both logical and physical, are the backbone of a we
 1. [Microsoft Documentation: AD Logical Structures](https://learn.microsoft.com/en-us/windows-server/identity/active-directory)
 2. [Active Directory Design Best Practices](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds-design-guide)
 3. [Troubleshooting Active Directory Replication](https://docs.microsoft.com/en-us/windows-server/identity/ad-replication-overview)
+
+Detailed textual diagram of the Active Directory (AD) structure with proper outlines:
+
+```
++------------------------------------------------------------------------------------------------+
+|                               Forest                                                           |
+|                  (The highest-level container)                                                 |
+|  +-----------------------------------------------------------------------------------------+   |
+|  |                           Domain                                                        |   |
+|  |             (Each domain has its own AD database)                                       |   |
+|  |  +--------------------------------------------------------------------------+           |   |
+|  |  |                     Domain Controllers                                   |           |   |
+|  |  |   (Servers that store AD database and handle queries)                    |           |   |
+|  |  +--------------------------------------------------------------------------+           |   |
+|  |                                                                                         |   |
+|  |  +-----------------------------------------------------------------------------------+  |   |
+|  |  |                 Organizational Units (OUs)                                        |  |   |
+|  |  | (Containers for organizing AD objects like users,                                 |  |   |
+|  |  |  computers, and groups)                                                           |  |   |
+|  |  |    +-----------------+      +-------------------------+                           |  |   | 
+|  |  |    |   OU 1 (HR)     |      |   OU 2 (IT)             |                           |  |   |
+|  |  |    +-----------------+      +-------------------------+                           |  |   |
+|  |  |           |                               |                                       |  |   |
+|  |  |           |                               |                                       |  |   |
+|  |  |           |                               |                                       |  |   |
+|  |  |  +--------------------+       +---------------------+   +--------------------+    |  |   |
+|  |  |  |  User Accounts     |       |  Group Accounts     |   |  Computer Accounts |    |  |   |
+|  |  |  | (Employees, etc.)  |       | (User, Computer,    |   | (Workstations,     |    |  |   |
+|  |  |  +--------------------+       |  Security, Admin,   |   |  Servers, etc.)    |    |  |   |
+|  |  |           |                   |    Distribution)    |   +--------------------+    |  |   |
+|  |  |           |                   +---------------------+                             |  |   |
+|  |  |           |                               |                                       |  |   |
+|  |  |  +------------------------+   +-----------------------+    +-------------------+  |  |   |
+|  |  |  |  Security Groups       |   |  Distribution Groups  |    |  Managed Service  |  |  |   |
+|  |  |  | (Used for permissions) |   | (Email, messaging)    |    |  Accounts         |  |  |   |
+|  |  |  +------------------------+   +-----------------------+    +-------------------+  |  |   |
+|  |  |                                                                                   |  |   |
+|  |  +-----------------------------------------------------------------------------------+  |   |
+|  |                                                                +-----------------+      |   |
+|  |  +---------------------+      +----------------------------+   |  Nested Groups  |      |   | 
+|  |  |   Domain Users      |      |   Domain Admins            |   |  (Groups within |      |   |
+|  |  |  (Global access)    |      |  (Global administrative    |   |   other groups) |      |   |
+|  |  +---------------------+      |   control over AD)         |   +-----------------+      |   |
+|  |                               +----------------------------+                            |   |
+|  +-----------------------------------------------------------------------------------------+   |
+|                                                                                                |  
++------------------------------------------------------------------------------------------------+
+```
+
+### Details:
+1. **Forest**: The top-level container in AD, which can have one or more domains. A forest is a security boundary.
+   
+2. **Domain**: A domain contains an AD database and acts as a security boundary. All objects like users, computers, groups, etc., are part of a domain. Domains are managed by domain controllers.
+
+3. **Domain Controllers**: Servers that store the AD database and handle requests for authentication and directory services.
+
+4. **Organizational Units (OUs)**: OUs are containers within a domain used to organize objects (users, groups, computers) into logical groups. OUs simplify administration by delegating control and applying Group Policies to subsets of objects within a domain.
+
+   - **OU 1 (HR)**: Example of an OU dedicated to managing human resources objects (e.g., user accounts, groups, computers).
+   - **OU 2 (IT)**: Example of an OU for managing IT-related objects.
+
+5. **User Accounts**: Accounts that represent individuals in the organization, with attributes like name, login credentials, group memberships, and permissions.
+
+6. **Group Accounts**: Groups can be either security groups (for assigning permissions) or distribution groups (for email distribution). Groups simplify the administration of permissions and access control.
+
+7. **Security Groups**: Groups used to assign access permissions to resources. These can be "Global," "Domain Local," or "Universal" in scope.
+
+8. **Distribution Groups**: Groups used primarily for email distribution. These do not hold security-related roles.
+
+9. **Computer Accounts**: Accounts representing devices (e.g., workstations, servers) within the domain.
+
+10. **Managed Service Accounts**: Special accounts used to run services with specific permissions and restrictions. These accounts help improve security for service-related tasks.
+
+11. **Nested Groups**: Groups that exist within other groups, allowing for more granular control and easier management of large group memberships.
+
+12. **Domain Users**: A global user account group that includes all users in the domain.
+
+13. **Domain Admins**: A special group with administrative privileges over the entire domain, including all OUs and objects within it.
+
