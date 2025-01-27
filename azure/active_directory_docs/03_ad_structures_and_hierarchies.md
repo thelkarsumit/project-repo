@@ -115,12 +115,7 @@ Active Directory structures, both logical and physical, are the backbone of a we
 
 ---
 
-## **Further Reading**
-1. [Microsoft Documentation: AD Logical Structures](https://learn.microsoft.com/en-us/windows-server/identity/active-directory)
-2. [Active Directory Design Best Practices](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds-design-guide)
-3. [Troubleshooting Active Directory Replication](https://docs.microsoft.com/en-us/windows-server/identity/ad-replication-overview)
-
-Detailed textual diagram of the Active Directory (AD) structure with proper outlines:
+# Detailed textual diagram of the Active Directory (AD) structure:
 
 ```
 +------------------------------------------------------------------------------------------------+
@@ -197,4 +192,11 @@ Detailed textual diagram of the Active Directory (AD) structure with proper outl
 12. **Domain Users**: A global user account group that includes all users in the domain.
 
 13. **Domain Admins**: A special group with administrative privileges over the entire domain, including all OUs and objects within it.
+
+---
+
+## **Further Reading**
+1. [Microsoft Documentation: AD Logical Structures](https://learn.microsoft.com/en-us/windows-server/identity/active-directory)
+2. [Active Directory Design Best Practices](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds-design-guide)
+3. [Troubleshooting Active Directory Replication](https://docs.microsoft.com/en-us/windows-server/identity/ad-replication-overview)
 
