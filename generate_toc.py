@@ -1,12 +1,13 @@
 import os
 
-def generate_toc(directory, depth=0, exclude_folders=None):
+def generate_toc(directory, depth=0, exclude_folders=None, max_depth=4):
     """
     Recursively generates a Table of Contents (ToC) for a directory structure.
-    Only directories (folders) will be listed, not files.
+    Only directories (folders) will be listed, not files. Limits recursion to max_depth.
     :param directory: The path to the directory
     :param depth: The current depth of recursion (used for indentation)
     :param exclude_folders: List of folder names to exclude from the ToC
+    :param max_depth: The maximum depth level to traverse (default is 4)
     :return: List of strings representing the ToC
     """
     if exclude_folders is None:
@@ -19,6 +20,10 @@ def generate_toc(directory, depth=0, exclude_folders=None):
     # Sort items so folders appear before files (if any)
     items.sort()
 
+    # Recursion will stop at max_depth (depth > max_depth means we stop)
+    if depth > max_depth:
+        return toc
+
     for idx, item in enumerate(items):
         item_path = os.path.join(directory, item)
         
@@ -29,8 +34,8 @@ def generate_toc(directory, depth=0, exclude_folders=None):
                 toc.append(f"{'    ' * depth}├── {item}/")
             else:
                 toc.append(f"{'│   ' * depth}├── {item}/")
-            # Recurse into subdirectories
-            toc += generate_toc(item_path, depth + 1, exclude_folders)
+            # Recurse into subdirectories if the depth is less than max_depth
+            toc += generate_toc(item_path, depth + 1, exclude_folders, max_depth)
 
     return toc
 
