@@ -1,10 +1,3 @@
-Here’s the detailed content for **06_ad_dns_integration.md**, covering all necessary concepts, practical configurations, and commands. This chapter ensures you have everything you need to understand and work with AD DNS integration effectively.
-
----
-
-### **06_ad_dns_integration.md**
-
-```markdown
 # AD DNS Integration
 
 ## **Overview**
