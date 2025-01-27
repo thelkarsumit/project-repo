@@ -56,7 +56,7 @@ def update_readme():
     base_dir = './'  # The root directory of your project (adjust if needed)
     
     # Define unwanted folders to be excluded from the ToC
-    exclude_folders = ['.gitignore', 'node_modules', '__pycache__']  # Example folders to exclude
+    exclude_folders = ['.git','.gitignore','node_modules', '__pycache__']  # Example folders to exclude
     
     toc = generate_toc(base_dir, exclude_folders=exclude_folders)
     
