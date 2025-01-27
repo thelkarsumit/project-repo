@@ -10,10 +10,10 @@ In this chapter, we will explore:
 
 ---
 
-## ** Logical Structures in Active Directory**
+## Logical Structures in Active Directory
 Logical structures in AD are used to group, organize, and manage network objects such as users, computers, and resources. They include:
 
-### ** Forest**
+### Forest
 - **Definition**: The **forest** is the topmost container in an AD hierarchy and serves as the security boundary. It contains one or more domains that share:
   - A common schema
   - Global catalog
@@ -25,7 +25,7 @@ Logical structures in AD are used to group, organize, and manage network objects
 
 ---
 
-### ** Domain**
+### Domain
 - **Definition**: A **domain** is a logical grouping of network objects (users, computers, groups, etc.) that:
   - Shares a common database (domain database).
   - Has its own security policies and settings.
@@ -36,7 +36,7 @@ Logical structures in AD are used to group, organize, and manage network objects
 
 ---
 
-### ** Organizational Unit (OU)**
+### Organizational Unit (OU)
 - **Definition**: An **Organizational Unit (OU)** is a container used to organize objects within a domain.
 - **Key Features**:
   - OUs allow for **delegated administration**. For example, IT staff can be assigned to manage only the "HR OU."
@@ -47,7 +47,7 @@ Logical structures in AD are used to group, organize, and manage network objects
 
 ---
 
-### ** Global Catalog (GC)**
+### Global Catalog (GC)
 - **Definition**: The **Global Catalog** is a special database that contains a searchable, partial copy of all objects in the forest.
 - **Key Features**:
   - Helps users and applications locate objects in other domains.
@@ -56,10 +56,10 @@ Logical structures in AD are used to group, organize, and manage network objects
 
 ---
 
-## ** Physical Structures in Active Directory**
+##  Physical Structures in Active Directory
 Physical structures are essential for optimizing replication and managing network resources based on physical locations. They include:
 
-### ** Sites**
+### Sites
 - **Definition**: A **site** represents a **physical location** with a well-connected network (e.g., a branch office).
 - **Key Features**:
   - Sites help optimize **replication** traffic by grouping domain controllers based on their physical proximity.
@@ -69,7 +69,7 @@ Physical structures are essential for optimizing replication and managing networ
 
 ---
 
-### ** Subnets**
+###  Subnets
 - **Definition**: A **subnet** is a range of IP addresses associated with a site.
 - **Key Features**:
   - Subnets map IP ranges to physical sites.
@@ -78,7 +78,7 @@ Physical structures are essential for optimizing replication and managing networ
 
 ---
 
-### ** Domain Controllers (DCs)**
+### Domain Controllers (DCs)
 - **Definition**: A **Domain Controller (DC)** is a server that hosts the AD database and responds to authentication and directory requests.
 - **Key Features**:
   - Every domain must have at least one DC.
@@ -105,7 +105,7 @@ Physical structures are essential for optimizing replication and managing networ
 
 ---
 
-## ** Summary**
+## Summary
 Active Directory structures, both logical and physical, are the backbone of a well-organized directory service. Understanding how forests, domains, OUs, and sites work together allows administrators to design and maintain scalable, efficient, and secure AD environments.
 
 ### **Key Takeaways**:
@@ -131,14 +131,14 @@ Active Directory structures, both logical and physical, are the backbone of a we
 |  |                                                                                         |   |
 |  |  +-----------------------------------------------------------------------------------+  |   |
 |  |  |                 Organizational Units (OUs)                                        |  |   |
-|  |  | (Containers for organizing AD objects like users,                                 |  |   |
-|  |  |  computers, and groups)                                                           |  |   |
+|  |  | (Containers for organizing AD objects like users,computers, and groups)           |  |   |
+|  |  |                                                                                   |  |   |
 |  |  |    +-----------------+      +-------------------------+                           |  |   | 
 |  |  |    |   OU 1 (HR)     |      |   OU 2 (IT)             |                           |  |   |
 |  |  |    +-----------------+      +-------------------------+                           |  |   |
 |  |  |           |                               |                                       |  |   |
 |  |  |           |                               |                                       |  |   |
-|  |  |           |                               |                                       |  |   |
+|  |  |           v                               v                                       |  |   |
 |  |  |  +--------------------+       +---------------------+   +--------------------+    |  |   |
 |  |  |  |  User Accounts     |       |  Group Accounts     |   |  Computer Accounts |    |  |   |
 |  |  |  | (Employees, etc.)  |       | (User, Computer,    |   | (Workstations,     |    |  |   |
@@ -152,12 +152,12 @@ Active Directory structures, both logical and physical, are the backbone of a we
 |  |  |  +------------------------+   +-----------------------+    +-------------------+  |  |   |
 |  |  |                                                                                   |  |   |
 |  |  +-----------------------------------------------------------------------------------+  |   |
-|  |                                                                +-----------------+      |   |
-|  |  +---------------------+      +----------------------------+   |  Nested Groups  |      |   | 
-|  |  |   Domain Users      |      |   Domain Admins            |   |  (Groups within |      |   |
-|  |  |  (Global access)    |      |  (Global administrative    |   |   other groups) |      |   |
-|  |  +---------------------+      |   control over AD)         |   +-----------------+      |   |
-|  |                               +----------------------------+                            |   |
+|  |                                                                                         |   |
+|  |  +---------------------+      +----------------------------+   +-----------------+      |   | 
+|  |  |   Domain Users      |      |   Domain Admins            |   |  Nested Groups  |      |   |
+|  |  |  (Global access)    |      |  (Global administrative    |   |  (Groups within |      |   |
+|  |  +---------------------+      |   control over AD)         |   |   other groups) |      |   |
+|  |                               +----------------------------+   +-----------------+      |   |
 |  +-----------------------------------------------------------------------------------------+   |
 |                                                                                                |  
 +------------------------------------------------------------------------------------------------+
