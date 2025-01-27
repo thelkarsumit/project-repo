@@ -89,7 +89,7 @@ Physical structures are essential for optimizing replication and managing networ
 
 ---
 
-## ** Best Practices for Managing AD Structures**
+## Best Practices for Managing AD Structures
 1. **Logical Design**:
    - Plan domains and OUs based on business requirements.
    - Use descriptive names for domains and OUs.
