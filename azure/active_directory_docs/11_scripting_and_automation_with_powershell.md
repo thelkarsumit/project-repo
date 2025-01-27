@@ -1,10 +1,4 @@
-Here’s a **detailed content outline** for the chapter **"Scripting and Automation with PowerShell"** to help you learn everything about using PowerShell for automating Active Directory tasks.
 
----
-
-### **11_scripting_and_automation_with_powershell.md**
-
-```markdown
 # Scripting and Automation with PowerShell
 
 ## Introduction
@@ -199,9 +193,4 @@ Restore-GPO -Name "Default Domain Policy" -Path "C:\GPOBackups"
 
 ## Conclusion
 PowerShell is a vital tool for any Active Directory administrator, enabling automation, efficiency, and scalability. By mastering these commands and scripting techniques, you'll significantly reduce manual effort and improve accuracy in managing your AD environment.
-```
-
 ---
-
-### Next Steps:
-Let me know if you'd like to start working on the **next chapter** or expand on any specific section in this one!
