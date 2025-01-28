@@ -1,3 +1,5 @@
+# same code is added in .github/workflows folder for github action and here also for learning perpose"
+
 name: Run Tests on Commit
 
 # Trigger this action on push or pull request
