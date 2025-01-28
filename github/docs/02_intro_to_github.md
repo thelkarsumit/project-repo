@@ -1,7 +1,3 @@
-Here's the content for `02_intro_to_github.md`:
-
----
-
 # Introduction to GitHub
 
 ## What is GitHub?
@@ -142,9 +138,3 @@ Here are some basic Git commands you will use frequently:
 ## Conclusion
 
 GitHub is an essential tool for developers, providing a powerful platform for collaboration, code management, and version control. By understanding how to create repositories, work with branches, and submit pull requests, you can take full advantage of its features. 
-
-In the next steps, you will explore **GitHub Actions** to automate workflows and integrate with other tools like Terraform and Jenkins, making your development and deployment processes even more efficient.
-
----
-
-Would you like me to help with any of these steps or provide further details on any particular section?
