@@ -5,8 +5,8 @@ on:
     branches:
       - main  # Trigger on push to the main branch
     paths:
-      - 'terraform/**/*.tf'  # Trigger on changes to .tf files
-      - 'terraform/**/*.tfvars'  # Trigger on changes to .tfvars files
+      - 'terraform_landing_zone/**/*.tf'  # Trigger on changes to .tf files
+      - 'terraform_landing_zone/**/*.tfvars'  # Trigger on changes to .tfvars files
 
 jobs:
   terraform:
