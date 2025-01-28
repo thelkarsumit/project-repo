@@ -1,4 +1,4 @@
-name: Run Tests on Commit
+name: Run Tests on Commit Final
 
 on:
   push:
