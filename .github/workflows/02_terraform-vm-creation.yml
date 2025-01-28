@@ -3,10 +3,10 @@ name: Terraform VM Creation
 on:
   push:
     branches:
-      - main  # Trigger action on push to the 'main' branch
+      - main  # Trigger on push to the main branch
     paths:
-      - 'terraform_landing_zone/**/*.tf'  # Only trigger if changes are made to .tf files under 'terraform_landing_zone' folder
-      - 'terraform_landing_zone/**/*.tfvars'  # Only trigger if changes are made to .tfvars files under 'terraform_landing_zone' folder
+      - 'terraform/**/*.tf'  # Trigger on changes to .tf files
+      - 'terraform/**/*.tfvars'  # Trigger on changes to .tfvars files
 
 jobs:
   terraform:
@@ -21,24 +21,29 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: '1.0.11'  # Specify your Terraform version here
+          terraform_version: '1.x'
         
-      # Step 3: Terraform initialization
+      # Step 3: Save the Google Cloud credentials JSON from GitHub Secrets
+      - name: Set up Google Cloud credentials
+        run: echo "${{ secrets.GCP_CREDENTIALS_JSON }}" > "${HOME}/gcloud-key.json"
+        
+      # Step 4: Authenticate with Google Cloud using the service account JSON
+      - name: Authenticate with Google Cloud
+        run: |
+          gcloud auth activate-service-account --key-file="${HOME}/gcloud-key.json"
+          gcloud config set project ${{ secrets.GCP_PROJECT_ID }}  # Set your GCP project ID
+      
+      # Step 5: Terraform Initialization
       - name: Terraform Init
         run: terraform init
-        working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp  # Adjust to your Terraform directory
+        working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp  # Specify the Terraform directory if needed
       
-      # Step 4: Terraform Plan
+      # Step 6: Terraform Plan
       - name: Terraform Plan
         run: terraform plan
-        working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp  # Adjust to your Terraform directory
+        working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp  # Specify the Terraform directory if needed
         
-      # Step 5: Terraform Apply (automatically approve)
+      # Step 7: Terraform Apply (automatically approve)
       - name: Terraform Apply
         run: terraform apply -auto-approve
-        working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp # Adjust to your Terraform directory
-        
-      # Optional: Add notification or logging
-      - name: Notify Success
-        run: echo "Terraform VM creation was successful!"
-        
+        working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp  # Specify the Terraform directory if needed
