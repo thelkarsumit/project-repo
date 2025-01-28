@@ -1,0 +1,44 @@
+name: Terraform VM Creation
+
+on:
+  push:
+    branches:
+      - main  # Trigger action on push to the 'main' branch
+    paths:
+      - 'terraform_landing_zone/**/*.tf'  # Only trigger if changes are made to .tf files under 'terraform_landing_zone' folder
+      - 'terraform_landing_zone/**/*.tfvars'  # Only trigger if changes are made to .tfvars files under 'terraform_landing_zone' folder
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Checkout the repository to get the latest code
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      # Step 2: Set up Terraform
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: '1.0.11'  # Specify your Terraform version here
+        
+      # Step 3: Terraform initialization
+      - name: Terraform Init
+        run: terraform init
+        working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp  # Adjust to your Terraform directory
+      
+      # Step 4: Terraform Plan
+      - name: Terraform Plan
+        run: terraform plan
+        working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp  # Adjust to your Terraform directory
+        
+      # Step 5: Terraform Apply (automatically approve)
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp # Adjust to your Terraform directory
+        
+      # Optional: Add notification or logging
+      - name: Notify Success
+        run: echo "Terraform VM creation was successful!"
+        
