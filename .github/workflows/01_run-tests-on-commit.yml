@@ -21,14 +21,6 @@ jobs:
       with:
         python-version: '3.x'  # Use Python 3.x version
 
-    - name: Install dependencies
-      run: |
-        if [ -f github/config/requirements.txt ]; then
-          pip install -r github/config/requirements.txt
-        else
-          echo "requirements.txt not found, skipping dependency installation"
-        fi
-
     - name: Run tests for modified files
       run: |
         MODIFIED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.py$')
