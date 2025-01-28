@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r config/requirements.txt  # Point to the correct path
+        pip install -r github/config/requirements.txt  # Point to the correct path
 
     - name: Run tests for modified files
       run: |
