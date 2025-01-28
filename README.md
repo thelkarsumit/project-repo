@@ -52,6 +52,10 @@
 ├── docker/
 │   ├── dockerfile/
 │   ├── documentation/
+├── github/
+│   ├── docs/
+│   ├── scripts/
+│   ├── workflows/
 ├── google-kubernetes-engine/
 │   ├── documentation/
 │   ├── manifest_files/
@@ -174,5 +178,4 @@
 │   │   │   ├── jenkins_master_slave_temp/
 │   │   │   │   ├── .terraform/
 │   │   ├── vpc_temp/
-├── toc_generate_script.py
 ```
