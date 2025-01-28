@@ -7,6 +7,7 @@ on:
     paths:
       - 'terraform_landing_zone/**/*.tf'  # Trigger on changes to .tf files
       - 'terraform_landing_zone/**/*.tfvars'  # Trigger on changes to .tfvars files
+      - '.github/workflows/02_terraform-vm-creation.yml' # Trigger on perticular file"
 
 jobs:
   terraform:
