@@ -1,4 +1,4 @@
-vm_name = "sumit-ansible-control-vm1"
+vm_name = "sumit-ansible-control-vm"
 machine_type = "e2-medium"
 zone         = "us-east1-a"
 project_id   = "my-project-amit1-415215"
