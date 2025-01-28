@@ -35,7 +35,7 @@ jobs:
       # Step 5: Authenticate with Google Cloud using the service account JSON
       - name: Authenticate with Google Cloud
         run: |
-          gcloud auth activate-service-account --key-file="$HOME/github/config/application_default_credentials.json"
+          gcloud auth activate-service-account --key-file="$HOME/.config/application_default_credentials.json"
           gcloud config set project my-project-amit1-415215  # Set your GCP project ID
       
       # Step 6: Terraform Initialization
