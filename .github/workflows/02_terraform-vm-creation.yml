@@ -31,7 +31,7 @@ jobs:
       - name: Authenticate with Google Cloud
         run: |
           gcloud auth activate-service-account --key-file="${HOME}/gcloud-key.json"
-          gcloud config set project ${{ secrets.GCP_PROJECT_ID }}  # Set your GCP project ID
+          gcloud config set project my-project-amit1-415215  # Set your GCP project ID
       
       # Step 5: Terraform Initialization
       - name: Terraform Init
