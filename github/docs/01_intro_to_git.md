@@ -39,11 +39,11 @@ Git is a free and open-source distributed version control system. It allows mult
 ## Basic Git Workflow
 
 The basic workflow in Git involves several steps:
-1. **Clone**: Copy an existing repository to your local machine.
-2. **Modify**: Make changes to your files.
-3. **Commit**: Record the changes in your local repository.
-4. **Push**: Upload the changes to a remote repository like GitHub.
-5. **Pull**: Retrieve the latest changes from the remote repository.
+1. **Clone**    : Copy an existing repository to your local machine.
+2. **Modify**   : Make changes to your files.
+3. **Commit**   : Record the changes in your local repository.
+4. **Push**     : Upload the changes to a remote repository like GitHub.
+5. **Pull**     : Retrieve the latest changes from the remote repository.
 
 ---
 
