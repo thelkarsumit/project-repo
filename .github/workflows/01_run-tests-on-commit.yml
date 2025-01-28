@@ -32,7 +32,15 @@ jobs:
 
     - name: Run tests for modified files
       run: |
-        MODIFIED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.py$')
+        # Get the commit hash of the previous commit (before the push)
+        PREVIOUS_COMMIT=${{ github.event.before }}
+        # Get the commit hash of the current commit
+        CURRENT_COMMIT=${{ github.sha }}
+
+        echo "Comparing changes between $PREVIOUS_COMMIT and $CURRENT_COMMIT"
+
+        # Get modified Python files
+        MODIFIED_FILES=$(git diff --name-only $PREVIOUS_COMMIT $CURRENT_COMMIT | grep '\.py$')
 
         if [ -n "$MODIFIED_FILES" ]; then
           echo "Modified Python files: $MODIFIED_FILES"
