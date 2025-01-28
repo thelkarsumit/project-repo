@@ -17,43 +17,34 @@ jobs:
       # Step 1: Checkout the repository to get the latest code
       - name: Checkout code
         uses: actions/checkout@v2
-          
-      # Step 2: Copy the service account key to the correct directory
-      - name: Set up Google Cloud credentials
-        run: |
-          # Create the directory for the Google Cloud credentials
-          mkdir -p $HOME/.config/gcloud
-          
-          # Copy the key from the repository's config directory to the runner's home directory
-          cp ./github/config/application_default_credentials.json $HOME/.config/gcloud/application_default_credentials.json 
                 
-      # Step 4: Debugging the credentials file format
+      # Step 2: Debugging the credentials file format
       - name: Debug - Display the contents of the credentials file
-        run: cat "$HOME/.config/gcloud/application_default_credentials.json "  
+        run: cat "github/config/application_default_credentials.jso"  
 
-      # Step 5: Authenticate with Google Cloud using the service account JSON
+      # Step 3: Authenticate with Google Cloud using the service account JSON
       - name: Authenticate with Google Cloud
         run: |
-          gcloud auth activate-service-account --key-file="$HOME/.config/application_default_credentials.json"
+          gcloud auth activate-service-account --key-file="github/config/application_default_credentials.jso"
           gcloud config set project my-project-amit1-415215  # Set your GCP project ID
           
-      # Step 6: Set up Terraform
+      # Step 4: Set up Terraform
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: '1.x'    
           
-      # Step 7: Terraform Initialization
+      # Step 5: Terraform Initialization
       - name: Terraform Init
         run: terraform init
         working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp  # Specify the Terraform directory if needed
       
-      # Step 8: Terraform Plan
+      # Step 6: Terraform Plan
       - name: Terraform Plan
         run: terraform plan
         working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp  # Specify the Terraform directory if needed
         
-      # Step 9: Terraform Apply (automatically approve)
+      # Step 7: Terraform Apply (automatically approve)
       - name: Terraform Apply
         run: terraform apply -auto-approve
         working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp  # Specify the Terraform directory if needed
