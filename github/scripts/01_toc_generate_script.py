@@ -26,7 +26,9 @@ def generate_toc(directory, depth=0, exclude_folders=None, max_depth=4):
 
     for idx, item in enumerate(items):
         item_path = os.path.join(directory, item)
-        
+               # Skip hidden folders (those starting with a dot)
+        if item.startswith('.'):
+            continue 
         # Check if the item is a folder and not in the exclude list
         if os.path.isdir(item_path) and item not in exclude_folders:
             # Format the folder and add it to the ToC
@@ -53,15 +55,15 @@ def update_readme():
     """
     Updates the README.md file with a generated ToC from the project directory structure.
     """
-    base_dir = './'  # The root directory of your project (adjust if needed)
+    base_dir = '../../'  # The root directory of your project (adjust if needed)
     
     # Define unwanted folders to be excluded from the ToC
-    exclude_folders = ['.git','.gitignore','node_modules', '__pycache__']  # Example folders to exclude
+    exclude_folders = ['.git','.gitignore','node_modules', '__pycache__','.codeoss',]  # Example folders to exclude
     
     toc = generate_toc(base_dir, exclude_folders=exclude_folders)
     
     # Write the ToC to the README.md file
-    with open('README.md', 'w') as file:
+    with open('../../repo-folder-structure.md', 'w') as file:
         file.write('# Project Folder Structure\n\n')
         file.write('```text\n')  # Start the code block
         file.write('\n'.join(toc))  # Join the list into a string with newlines for each item
