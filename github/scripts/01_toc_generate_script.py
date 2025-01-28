@@ -65,7 +65,7 @@ def update_readme():
     # Write the ToC to the README.md file
     with open('../../00_repo-folder-structure.md', 'w') as file:
         file.write('# Project Folder Structure\n\n')
-        file.write('```text\n')  # Start the code block
+        file.write('```text\n')  # Start the code block.
         file.write('\n'.join(toc))  # Join the list into a string with newlines for each item
         file.write('\n```')  # End the code block
 
