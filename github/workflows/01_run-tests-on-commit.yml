@@ -1,4 +1,4 @@
-# same code is added in .github/workflows folder for github action and here also for learning perpose"
+# same code is added in .github/workflows folder for github action and here also for learning perpose
 
 name: Run Tests on Commit
 
