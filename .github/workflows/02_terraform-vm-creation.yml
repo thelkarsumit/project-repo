@@ -17,15 +17,24 @@ jobs:
       # Step 1: Checkout the repository to get the latest code
       - name: Checkout code
         uses: actions/checkout@v2
-                
+
+      # Step 2: Copy the service account key to the correct directory
+      - name: Set up Google Cloud credentials
+        run: |
+          # Create the directory for the Google Cloud credentials
+          mkdir -p $HOME/.config/gcloud
+          
+          # Copy the key from the repository's config directory to the runner's home directory
+          cp ./github/config/gcloud-key.json $HOME/.config/gcloud/application_default_credentials.json              
+
       # Step 2: Debugging the credentials file format
       - name: Debug - Display the contents of the credentials file
-        run: cat "github/config/application_default_credentials.jso"  
+        run: cat "$HOME/.config/gcloud/application_default_credentials.json"  
 
       # Step 3: Authenticate with Google Cloud using the service account JSON
       - name: Authenticate with Google Cloud
         run: |
-          gcloud auth activate-service-account --key-file="github/config/application_default_credentials.jso"
+          gcloud auth activate-service-account --key-file="$HOME/.config/gcloud/application_default_credentials.json"
           gcloud config set project my-project-amit1-415215  # Set your GCP project ID
           
       # Step 4: Set up Terraform
