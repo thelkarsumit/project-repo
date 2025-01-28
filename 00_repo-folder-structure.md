@@ -1,6 +1,7 @@
 # Project Folder Structure
 
 ```text
+├── 00_repo-folder-structure.md
 ├── README.md
 ├── ansible/
 │   ├── README.md
@@ -132,7 +133,6 @@
 │   │   ├── 02-gcp-sql-personal-expense-tracker/
 │   │   ├── 03-mig-loadbalancer-personal-expense-tracker/
 │   ├── python_usecase/
-├── repo-folder-structure.md
 ├── revision_plan/
 │   ├── documentation/
 │   ├── images/
