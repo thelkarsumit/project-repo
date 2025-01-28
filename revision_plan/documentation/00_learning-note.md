@@ -136,3 +136,18 @@
 - **1:** learning more about python and powershell usecase.
 - **2:** Documentated python and powershell learning
 ---
+## 26. 27 Jan (Monday)
+- **1:** Revised learing about python and powershell.
+- **2:** Started understanding about AD and use of powershell.
+- **3:** Documentated AD and powershell learning,
+## 27. 28 Jan (Tuesday) 
+- **1:** Learn about github action and usecase. 
+- **2:** Try to do automation using github action for python & terraform file change.
+- **3:** Documentated Github Action learning.
+## 28. 29 Jan (Wednesday)
+- **1:** 
+## 29. 2 Jan (Thursday)
+- **1:** 
+## 30. 24 Jan (Friday)
+- **1:** 
+---
