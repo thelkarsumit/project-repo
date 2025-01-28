@@ -1,8 +1,6 @@
-Let’s break down this Python code step by step:
+# Overview of What the Code Does
 
-### **Overview of What the Code Does**
-
-This script generates a **Table of Contents (ToC)** for the directory structure of my project repo. The ToC is written in a way that can be directly copied into a `README.md` file, showing a tree-like structure of folders and files..
+This script generates a **Table of Contents (ToC)** for the directory structure of my project repo. The ToC is written in a way that can be directly copied into a `00_repo-folder-structure.md` file, showing a tree-like structure of folders and files.
 
 The script:
 - Recursively lists folders and files.
@@ -209,5 +207,3 @@ if __name__ == "__main__":
    - Only folders are included for depth 2 and beyond.
 3. The resulting ToC is then written to the `README.md` file, inside a code block.
 4. The script stops processing once the `max_depth` is reached.
-
-Let me know if you need any more clarification!
