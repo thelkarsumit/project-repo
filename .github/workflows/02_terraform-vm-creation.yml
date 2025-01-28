@@ -5,7 +5,7 @@ on:
     branches:
       - main  # Trigger action on push to the 'main' branch
     paths:
-      - 'terraform/**/*.tf'  # Only trigger if changes are made to .tf files under 'terraform/' folder
+      - 'terraform_landing_zone/**/*.tf'  # Only trigger if changes are made to .tf files under 'terraform/' folder
 
 jobs:
   terraform:
