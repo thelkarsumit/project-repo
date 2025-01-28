@@ -53,6 +53,7 @@
 │   ├── dockerfile/
 │   ├── documentation/
 ├── github/
+│   ├── config/
 │   ├── docs/
 │   ├── scripts/
 │   ├── workflows/
