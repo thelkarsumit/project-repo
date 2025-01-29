@@ -4,11 +4,11 @@ on:
   push:
     paths:
       - '**/*.py'  # Trigger only when Python files are changed
-      - '.github/workflows/.yml' # Trigger on perticular file"
+      - '.github/workflows/*.yml' # Trigger on perticular file"
   pull_request:
     paths:
       - '**/*.py'  # Trigger only when Python files are changed
-      - '.github/workflows/.yml' # Trigger on perticular file"
+      - '.github/workflows/*.yml' # Trigger on perticular file"
 jobs:
   test:
     runs-on: ubuntu-latest  # Use the latest Ubuntu runner
