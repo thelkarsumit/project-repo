@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Your Expense Dashboard</h1>
+    <h2>Expenses:</h2>
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+        {% for expense in expenses %}
+        <tr>
+            <td>{{ expense.category }}</td>
+            <td>{{ expense.amount }}</td>
+            <td>{{ expense.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('expense_routes.add_expense') }}">Add New Expense</a>
+</body>
+</html>
