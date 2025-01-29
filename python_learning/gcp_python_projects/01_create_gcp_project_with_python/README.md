@@ -8,7 +8,7 @@ This Python script demonstrates how to programmatically create a new Google Clou
 
 Here is the folder structure for this task:
 
-'''
+```
 create_gcp_project_with_python/
 │
 ├── src/
@@ -18,7 +18,7 @@ create_gcp_project_with_python/
 │   └── gcp_config.json   # Configuration file containing project details and credentials 
 ├── README.md             # Documentation for usage and setup
 └── setup.py              # Setup file for the Python project
-'''
+```
 
 ### 1. **`create_project.py`** - The Main Script
 
