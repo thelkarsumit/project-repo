@@ -1,4 +1,4 @@
-name: Run Tests on Commit
+name: Run Python Tests on Commit
 
 on:
   push:
