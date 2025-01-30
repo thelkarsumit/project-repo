@@ -13,12 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout code with full history
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Fetch full commit history
 
       - name: Get changed Python files
         run: |
-          # Get a list of changed files between the last commit and the current commit.
+          # Get a list of changed files between the previous commit and the current commit
           CHANGED_FILES=$(git diff --name-only HEAD~1)
 
           # Filter the Python files
