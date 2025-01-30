@@ -17,28 +17,33 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      # Step 2: Set up Terraform
+      # Step 2: Set up Google Cloud authentication
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'  # Set your GCP credentials as GitHub secret
+
+      # Step 3: Set up Terraform
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: '1.0.11'  # Specify your Terraform version here
         
-      # Step 3: Terraform initialization
+      # Step 4: Terraform initialization
       - name: Terraform Init
         run: terraform init
         working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp  # Adjust to your Terraform directory
       
-      # Step 4: Terraform Plan
+      # Step 5: Terraform Plan
       - name: Terraform Plan
         run: terraform plan
         working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp  # Adjust to your Terraform directory
         
-      # Step 5: Terraform Apply (automatically approve)
+      # Step 6: Terraform Apply (automatically approve)
       - name: Terraform Apply
         run: terraform apply -auto-approve
-        working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp # Adjust to your Terraform directory
+        working-directory: terraform_landing_zone/template/vm_temp/ansible_control_node_vm_temp  # Adjust to your Terraform directory
         
       # Optional: Add notification or logging
       - name: Notify Success
         run: echo "Terraform VM creation was successful!"
-        
