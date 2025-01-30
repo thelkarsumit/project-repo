@@ -18,7 +18,7 @@ jobs:
 
       - name: Get changed Python files
         run: |
-          # Get a list of changed files
+          # Get a list of changed files between the last commit and the current commit
           CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
 
           # Filter the Python files
