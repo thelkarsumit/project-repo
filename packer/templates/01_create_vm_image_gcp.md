@@ -1,6 +1,4 @@
-Here is the content for the Packer template `01_create_vm_image_gcp.json`, which will guide you through creating a custom VM image on Google Cloud Platform (GCP) using Packer.
-
-### `01_create_vm_image_gcp.json`
+# 01_create_vm_image_gcp.json
 
 ```json
 {
