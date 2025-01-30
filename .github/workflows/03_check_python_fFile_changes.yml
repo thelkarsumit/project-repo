@@ -16,14 +16,21 @@ jobs:
       - name: Checkout code with full history
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Fetch full commit history
+          fetch-depth: 0  # Ensure full commit history
 
       - name: Get changed Python files
         run: |
-          # Get a list of changed files between the previous commit and the current commit
-          CHANGED_FILES=$(git diff --name-only HEAD~1)
+          # Fetch the last 2 commits to compare changes
+          echo "Fetching last 2 commits"
+          git fetch --depth=2
 
-          # Filter the Python files
+          # Get the list of changed files between the last commit and the current commit
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
+
+          # Print the changed files
+          echo "Changed files: $CHANGED_FILES"
+
+          # Filter the Python files from the list of changed files
           PY_FILES=$(echo "$CHANGED_FILES" | grep -E '\.py$')
 
           # Check if there are any Python files changed
