@@ -1,0 +1,25 @@
+{
+    "builders": [
+      {
+        "type": "googlecompute",
+        "project_id": "your-project-id", 
+        "source_image": "debian-9-stretch-v20190709",  
+        "zone": "us-central1-a",  
+        "image_name": "packer-demo-{{timestamp}}",  
+        "ssh_username": "packer",  
+        "ssh_private_key_file": "./ssh_key",  
+        "image_family": "packer-demo-family", 
+        "tags": ["packer", "demo","packer", "gcp"],  
+        "force_delete": true,  
+        "disk_size": 10,  
+        "disk_type": "pd-standard"
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "shell",
+        "script": "./scripts/install-software.sh"  
+      }
+    ]
+  }
+  
