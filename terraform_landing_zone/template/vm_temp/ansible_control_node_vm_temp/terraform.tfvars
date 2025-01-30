@@ -1,6 +1,6 @@
 vm_name = "sumit-ansible-control-vm"
 machine_type = "e2-medium"
-zone         = "us-east1-a"
+zone         = "us-east1-d"
 project_id   = "my-project-amit1-415215"
 image        = "debian-cloud/debian-11"
 network      = "default"
