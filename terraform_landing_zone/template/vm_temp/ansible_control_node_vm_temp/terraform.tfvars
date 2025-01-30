@@ -1,11 +1,11 @@
 vm_name = "sumit-ansible-control-vm1"
 machine_type = "e2-medium"
-zone         = "us-east1-d"
+zone         = "asia-southeast1-b"
 project_id   = "my-project-amit1-415215"
 image        = "debian-cloud/debian-11"
-network      = "default"
-subnetwork   = "subnet1"
-subnetwork_project = "subnet1"
+network      = "asia-southeast-sk-vpc"
+subnetwork   = "southeast-sub-sk"
+subnetwork_project = "southeast-sub-sk"
 metadata_startup_script = <<EOT
 #!/bin/bash
 sudo apt-get update -y
