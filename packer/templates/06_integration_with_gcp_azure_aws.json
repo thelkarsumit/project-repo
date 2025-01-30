@@ -1,0 +1,57 @@
+{
+    "variables": {
+      "gcp_project_id": "your-gcp-project-id",
+      "azure_client_id": "your-azure-client-id",
+      "azure_client_secret": "your-azure-client-secret",
+      "aws_access_key": "your-aws-access-key",
+      "aws_secret_key": "your-aws-secret-key"
+    },
+    
+    "builders": [
+      {
+        "type": "googlecompute",
+        "project_id": "{{user `gcp_project_id`}}",
+        "source_image": "debian-9-stretch-v20190709",
+        "zone": "us-central1-a",
+        "image_name": "packer-demo-{{timestamp}}",
+        "ssh_username": "packer",
+        "machine_type": "n1-standard-1"
+      },
+      {
+        "type": "azure-arm",
+        "client_id": "{{user `azure_client_id`}}",
+        "client_secret": "{{user `azure_client_secret`}}",
+        "tenant_id": "your-azure-tenant-id",
+        "subscription_id": "your-azure-subscription-id",
+        "managed_image_resource_group": "packer-images",
+        "managed_image_name": "packer-demo-{{timestamp}}",
+        "os_type": "Linux",
+        "image_publisher": "Canonical",
+        "image_offer": "UbuntuServer",
+        "image_sku": "16.04-LTS",
+        "location": "East US",
+        "vm_size": "Standard_DS1_v2"
+      },
+      {
+        "type": "amazon-ebs",
+        "access_key": "{{user `aws_access_key`}}",
+        "secret_key": "{{user `aws_secret_key`}}",
+        "region": "us-west-2",
+        "source_ami": "ami-0c55b159cbfafe1f0",
+        "instance_type": "t2.micro",
+        "ami_name": "packer-demo-{{timestamp}}",
+        "ssh_username": "ubuntu",
+        "tags": {
+          "Name": "packer-demo"
+        }
+      }
+    ],
+    
+    "provisioners": [
+      {
+        "type": "shell",
+        "script": "./scripts/install-software.sh"
+      }
+    ]
+  }
+  
