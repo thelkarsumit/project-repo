@@ -1,0 +1,33 @@
+name: Check Python File Changes
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get changed Python files
+        run: |
+          # Get a list of changed files
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+
+          # Filter the Python files
+          PY_FILES=$(echo "$CHANGED_FILES" | grep -E '\.py$')
+
+          # Check if there are any Python files changed
+          if [ -z "$PY_FILES" ]; then
+            echo "No Python files changed."
+          else
+            echo "Changed Python files:"
+            echo "$PY_FILES"
+          fi
