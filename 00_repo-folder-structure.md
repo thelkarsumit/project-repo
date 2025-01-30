@@ -132,6 +132,15 @@
 │   │   ├── 01-gcp-storage-personal-expense-tracker/
 │   │   │   ├── templates/
 │   │   ├── 02-gcp-sql-personal-expense-tracker/
+│   │   │   ├── backend/
+│   │   │   │   ├── db/
+│   │   │   │   ├── routes/
+│   │   │   │   ├── services/
+│   │   │   ├── docs/
+│   │   │   ├── frontend/
+│   │   │   │   ├── static/
+│   │   │   │   ├── templates/
+│   │   │   ├── scripts/
 │   │   ├── 03-mig-loadbalancer-personal-expense-tracker/
 │   ├── python_usecase/
 ├── revision_plan/
