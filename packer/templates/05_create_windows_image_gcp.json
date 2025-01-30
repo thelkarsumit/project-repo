@@ -1,0 +1,36 @@
+{
+    "builders": [
+      {
+        "type": "googlecompute",
+        "project_id": "your-gcp-project-id",
+        "zone": "us-central1-a",
+        "source_image": "windows-server-2019-dc-v20210114",
+        "image_name": "windows-server-custom-{{timestamp}}",
+        "ssh_username": "packer",
+        "image_family": "windows-server-family",
+        "machine_type": "n1-standard-1",
+        "boot_disk_size": "50",
+        "disk_size": "50",
+        "tags": ["windows", "packer"],
+        "metadata": {
+          "windows-startup-script-ps1": "./scripts/windows-startup-script.ps1"
+        }
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "powershell",
+        "inline": [
+          "Write-Host 'Running initial setup for Windows Server Image'",
+          "Set-Date -Date '2025-01-01 00:00:00'",
+          "Install-WindowsFeature -Name Web-Server",
+          "Set-ExecutionPolicy RemoteSigned -Force"
+        ]
+      },
+      {
+        "type": "shell",
+        "script": "./scripts/install-software.sh"
+      }
+    ]
+  }
+  
