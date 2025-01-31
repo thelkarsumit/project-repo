@@ -40,6 +40,7 @@ jobs:
           else
             echo "Changed Python files:"
             echo "$PY_FILES"
+            python $PY_FILES
           fi
 
       - name: Run Python script on changed files
