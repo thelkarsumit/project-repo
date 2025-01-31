@@ -44,8 +44,22 @@ jobs:
 
       - name: Run Python script on changed files
         run: |
+          # Check if there are Python files
+          if [ -z "$PY_FILES" ]; then
+            echo "No Python files to run."
+            exit 0
+          fi
+
           # Loop through each Python file and run it with Python
           for file in $PY_FILES; do
-            echo "Running script: $file"
-            python $file  # You can also add any specific flags or commands here if needed
+            # Debugging output to see how the filenames are being interpreted
+            echo "Running script: '$file'"
+
+            # Check if file exists before trying to run it
+            if [ -f "$file" ]; then
+              echo "File exists, running: $file"
+              python "$file"  # Add quotes to handle files with spaces
+            else
+              echo "File does not exist: $file"
+            fi
           done
