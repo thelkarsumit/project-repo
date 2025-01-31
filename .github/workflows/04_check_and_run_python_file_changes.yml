@@ -1,4 +1,4 @@
-name: Check Python File Changes
+name: Check and Run Python File Changes
 
 on:
   push:
