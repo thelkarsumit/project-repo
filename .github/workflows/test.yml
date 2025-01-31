@@ -1,0 +1,58 @@
+name: Test Check and Run Python File Changes
+
+on:
+  push:
+    paths:
+      - '**/*.py'  # Trigger only when Python files are changed
+  pull_request:
+    paths:
+      - '**/*.py'  # Trigger only when Python files are changed
+
+jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code with full history
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Ensure full commit history
+
+      - name: Get changed Python files 
+        run: |
+          # Fetch the last 2 commits to compare changes
+          echo "Fetching last 2 commits"
+          git fetch --depth=2
+
+          # Get the list of changed files between the last commit and the current commit
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
+
+          # Print the changed files
+          echo "Changed files: $CHANGED_FILES"
+
+          # Filter the Python files from the list of changed files
+          PY_FILES=$(echo "$CHANGED_FILES" | grep -E '\.py$')
+
+          # Handle deleted files
+          DELETED_FILES=$(git diff --name-only --diff-filter=D HEAD~1 HEAD | grep -E '\.py$')
+
+          if [ -z "$PY_FILES" ] && [ -z "$DELETED_FILES" ]; then
+            echo "No Python files changed or deleted."
+            exit 0  # No Python files changed or deleted, exit successfully
+          fi
+
+          # Handle modified or added Python files
+          if [ ! -z "$PY_FILES" ]; then
+            echo "Changed or added Python files:"
+            echo "$PY_FILES"
+            for file in $PY_FILES; do
+              python $file  # Execute each Python file
+            done
+          fi
+
+          # Handle deleted Python files
+          if [ ! -z "$DELETED_FILES" ]; then
+            echo "Deleted Python files:"
+            echo "$DELETED_FILES"
+            # Perform any necessary clean-up or notification here for deleted files
+          fi
