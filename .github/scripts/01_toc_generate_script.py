@@ -7,8 +7,8 @@ def generate_toc(directory, depth=0, exclude_folders=None, max_depth=4):
     :param directory: The path to the directory
     :param depth: The current depth of recursion (used for indentation)
     :param exclude_folders: List of folder names to exclude from the ToC
-    :param max_depth: The maximum depth level to traverse (default is 4)
-    :return: List of strings representing the ToC
+    :param max_depth: The maximum depth level to traverse (default is 4).
+    :return: List of strings representing the ToC.
     """
     if exclude_folders is None:
         exclude_folders = []
