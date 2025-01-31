@@ -1,0 +1,43 @@
+name: Update Table of Contents
+
+on:
+  push:
+    branches:
+      - '**'  # Trigger on push to any branch
+    paths:
+      - '**/*'  # Trigger on any change in the repository (new files, folders, etc.)
+
+jobs:
+  update-toc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f github/config/requirements.txt ]; then
+            pip install -r github/config/requirements.txt  # Adjust path if needed
+          else
+            echo "requirements.txt not found, skipping dependency installation"
+          fi
+
+      - name: Run Table of Contents script
+        run: python .github/scripts/01_toc_generate_script.py
+
+      - name: Commit and push changes (if any)
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add README.md  # Update the README.md file (assuming the TOC is written there)
+          git commit -m "Update Table of Contents" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub Actions
