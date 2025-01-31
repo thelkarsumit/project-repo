@@ -1,4 +1,4 @@
-name: Test 
+name: Check and Run Python File Changes
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0  # Ensure full commit history
 
-      - name: Get changed Python files 
+      - name: Get changed Python files
         run: |
           # Fetch the last 2 commits to compare changes
           echo "Fetching last 2 commits"
@@ -31,31 +31,36 @@ jobs:
           echo "Changed files: $CHANGED_FILES"
 
           # Filter the Python files from the list of changed files
-          # PY_FILES=$(echo "$CHANGED_FILES" | grep -E '\.py$')
+          PY_FILES=$(echo "$CHANGED_FILES" | grep -E '\.py$')
 
-          # Handle deleted files
+          # Handle deleted files (files deleted in the last commit)
           DELETED_FILES=$(git diff --name-only --diff-filter=D HEAD~1 HEAD | grep -E '\.py$')
 
-          # Print the changed files
-          echo "Deleted fils: "$DELETED_FILES""
-
-          if [ -z "$CHANGED_FILES" ] && [ -z "$DELETED_FILES" ]; then
+          if [ -z "$PY_FILES" ] && [ -z "$DELETED_FILES" ]; then
             echo "No Python files changed or deleted."
             exit 0  # No Python files changed or deleted, exit successfully
           fi
 
           # Handle modified or added Python files
-          if [ ! -z "$CHANGED_FILES" ]; then
+          if [ ! -z "$PY_FILES" ]; then
             echo "Changed or added Python files:"
-            echo "$CHANGED_FILES"
-            for file in $CHANGED_FILES; do
-              python $file  # Execute each Python file
+            echo "$PY_FILES"
+            for file in $PY_FILES; do
+              if [ -f "$file" ]; then  # Check if the file exists before running
+                echo "Running Python file: $file"
+                python "$file"  # Execute the Python file
+              else
+                echo "File $file does not exist, skipping execution."
+              fi
             done
           fi
 
-          # Handle deleted Python files
+          # Handle deleted Python files (notify about deletions)
           if [ ! -z "$DELETED_FILES" ]; then
             echo "Deleted Python files:"
             echo "$DELETED_FILES"
-            # Perform any necessary clean-up or notification here for deleted files
+            # Handle deletion notification or any required clean-up
+            for file in $DELETED_FILES; do
+              echo "File deleted: $file"
+            done
           fi
