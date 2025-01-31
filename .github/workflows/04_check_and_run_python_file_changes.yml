@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0  # Ensure full commit history
 
-      - name: Get changed Python files And Run Python script on changed files
+      - name: Get changed Python files 
         run: |
           # Fetch the last 2 commits to compare changes
           echo "Fetching last 2 commits"
@@ -42,5 +42,16 @@ jobs:
             echo "$PY_FILES"
             python $PY_FILES
           fi
+      - name: Run Python script on changed files
+        run: |
+          # Check if there are any Python files changed
+          if [ -z "$PY_FILES" ]; then
+            echo "No Python files changed."
+            exit 0  # No Python files changed, exit successfully
+          else
+            echo "$PY_FILES"
+            python $PY_FILES
+          fi
+
 
 
