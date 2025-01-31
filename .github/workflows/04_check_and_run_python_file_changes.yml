@@ -40,14 +40,6 @@ jobs:
           else
             echo "Changed Python files:"
             echo "$PY_FILES"
-           # python $PY_FILES
-
-          # Check if there are any Python files changed
-          if [ -z "$PY_FILES" ]; then
-            echo "No Python files changed."
-            exit 0  # No Python files changed, exit successfully
-          else
-            echo "$PY_FILES"
             python $PY_FILES
           fi
 
