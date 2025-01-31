@@ -2,11 +2,11 @@ name: Check Python File Changes
 
 on:
   push:
-     paths:
-      - '**/*.py'  # Trigger only when Python files are changed
+    branches:
+      - main
   pull_request:
-    paths:
-      - '**/*.py'  # Trigger only when Python files are changed
+    branches:
+      - main
 
 jobs:
   check-changes:
@@ -40,3 +40,7 @@ jobs:
             echo "Changed Python files:"
             echo "$PY_FILES"
           fi
+
+      - name: Run Table of Contents script
+        run: |
+          echo "python $PY_FILES "
