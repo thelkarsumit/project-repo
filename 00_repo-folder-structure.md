@@ -52,11 +52,6 @@
 ├── docker/
 │   ├── dockerfile/
 │   ├── documentation/
-├── github/
-│   ├── config/
-│   ├── docs/
-│   ├── scripts/
-│   ├── workflows/
 ├── google-kubernetes-engine/
 │   ├── documentation/
 │   ├── manifest_files/
@@ -116,6 +111,9 @@
 │   │   │   ├── src/
 │   │   │   │   ├── main/
 │   │   │   │   ├── test/
+├── packer/
+│   ├── documentation/
+│   ├── templates/
 ├── powershell/
 │   ├── documentation/
 │   ├── powershell_scripts_for_GCP_tasks/
@@ -172,4 +170,6 @@
 │   │   │   ├── ansible_managed_nodes_vm_temp/
 │   │   │   ├── jenkins_master_slave_temp/
 │   │   ├── vpc_temp/
+├── test-folder/
+│   ├── shyam.py
 ```
