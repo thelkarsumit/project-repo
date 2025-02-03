@@ -18,7 +18,7 @@
     "provisioners": [
       {
         "type": "shell",
-        "script": "./scripts/install-software.sh"  
+        "script": "./packer/scripts/01_packer-install-devops-tools.sh"  
       }
     ]
   }
