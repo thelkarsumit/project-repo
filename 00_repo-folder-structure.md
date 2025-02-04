@@ -113,6 +113,7 @@
 │   │   │   │   ├── test/
 ├── packer/
 │   ├── documentation/
+│   ├── readme_templates/
 │   ├── scripts/
 │   ├── templates/
 ├── powershell/
