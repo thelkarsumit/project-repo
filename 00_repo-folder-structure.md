@@ -113,6 +113,7 @@
 │   │   │   │   ├── test/
 ├── packer/
 │   ├── documentation/
+│   ├── scripts/
 │   ├── templates/
 ├── powershell/
 │   ├── documentation/
@@ -170,6 +171,4 @@
 │   │   │   ├── ansible_managed_nodes_vm_temp/
 │   │   │   ├── jenkins_master_slave_temp/
 │   │   ├── vpc_temp/
-├── test-folder/
-│   ├── shyam.py
 ```
