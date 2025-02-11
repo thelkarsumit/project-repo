@@ -7,6 +7,7 @@
 │   ├── scripts/
 │   ├── workflows/
 ├── README.md
+├── REPO-FOLDER-STRUCTURE.md
 ├── ansible/
 │   ├── README.md
 │   ├── ansible.cfg
@@ -218,7 +219,6 @@
 │   │   │   ├── scripts/
 │   │   ├── 03-mig-loadbalancer-personal-expense-tracker/
 │   ├── python_usecase/
-├── repo-folder-structure.md
 ├── revision_plan/
 │   ├── documentation/
 │   ├── feb-revision-plan.md
