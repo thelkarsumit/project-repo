@@ -7,7 +7,7 @@
 #       1: Used when you do not know how many times you want to execute the loop beforehand.
 #       2: It runs as long as the specified condition evaluates to True. 
 
-# Use Case 1: Using a for loop to find numbers divisible by both 7 and 9 in the first 1000 numbers
+# Use Case 1: Using a for loop to find numbers divisible by both 7 and 9 in the first 1000 numbers.
 def divisible_for_loop():
     count = 0
     for num in range(1, 1001):
