@@ -3,7 +3,7 @@ import os
 def generate_toc(directory, depth=0, exclude_folders=None, max_depth=5):
     """
     Recursively generates a Table of Contents (ToC) for a directory structure.
-    Files will be included only for depth 0, 1, and 2; from depth 3 onwards, only folders are listed.
+    Files will be included only for depth 0 and 1; from depth 2 onwards, only folders are listed.
     Includes .github folder but excludes other hidden files/folders.
     :param directory: The path to the directory
     :param depth: The current depth of recursion (used for indentation)
@@ -46,8 +46,8 @@ def generate_toc(directory, depth=0, exclude_folders=None, max_depth=5):
             # Recurse into subdirectories if the depth is less than max_depth
             toc += generate_toc(item_path, depth + 1, exclude_folders, max_depth)
         
-        # For depth 0, 1, and 2, if the item is a file, include it in the ToC
-        elif depth < 3 and os.path.isfile(item_path):
+        # For depth 0, 1, if the item is a file, include it in the ToC
+        elif depth < 2 and os.path.isfile(item_path):
             indent = '│   ' * depth
             toc.append(f"{indent}├── {item}")
 
@@ -57,7 +57,7 @@ def update_readme():
     """
     Updates the README.md file with a generated ToC from the project directory structure.
     """
-    base_dir = '../../'  # The root directory of your project (adjust if needed)
+    base_dir = '../../'  # The root directory of your project.
     
     # Define unwanted folders to be excluded from the ToC
     exclude_folders = ['.git', '.gitignore', 'node_modules', '__pycache__', '.codeoss']  # Example folders to exclude
@@ -65,7 +65,7 @@ def update_readme():
     toc = generate_toc(base_dir, exclude_folders=exclude_folders)
     
     # Write the ToC to the README.md file
-    with open('../../00_new_repo-folder-structure.md', 'w') as file:
+    with open('../../repo-folder-structure.md', 'w') as file:
         file.write('# Project Folder Structure\n\n')
         file.write('```text\n')  # Start the code block.
         file.write('\n'.join(toc))  # Join the list into a string with newlines for each item.
