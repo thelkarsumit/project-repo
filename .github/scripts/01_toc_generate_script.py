@@ -35,7 +35,7 @@ def generate_toc(directory, depth=0, exclude_folders=None, max_depth=5):
         # Check if the item is a folder and not in the exclude list
         if os.path.isdir(item_path) and item not in exclude_folders:
             # Format the folder and add it to the ToC
-            indent = '│   ' * depth  # Adjust for current depth
+            indent = '│   ' * depth  # Adjust for current depth.
             if depth == 0:
                 toc.append(f"{'    ' * depth}├── {item}/")
             elif depth == 1:
