@@ -5,4 +5,6 @@ sum = a + v
 print("a=" ,a)
 print("v=" ,v)
 print("sum of a and v =" ,sum)
+sub = a - v
+print("Sub of a and v =",sub)
 
