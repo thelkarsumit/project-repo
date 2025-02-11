@@ -6,7 +6,6 @@
 │   ├── docs/
 │   ├── scripts/
 │   ├── workflows/
-├── 00_new_repo-folder-structure.md
 ├── README.md
 ├── ansible/
 │   ├── README.md
