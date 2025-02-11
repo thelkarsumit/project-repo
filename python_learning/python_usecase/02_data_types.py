@@ -8,7 +8,7 @@
 
 # Defining integer variables
 x = 10          # Positive integer
-y = -14         # Negative integer
+y = -5        # Negative integer
 z = 0           # Zero
 
 # Printing integer values
