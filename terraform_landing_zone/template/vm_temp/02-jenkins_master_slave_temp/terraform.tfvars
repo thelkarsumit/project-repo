@@ -1,11 +1,11 @@
 instances = {
 "sumit-jenkins-master-vm" = {
     machine_type = "e2-medium"
-    zone         = "northamerica-northeast1-a"
+    zone         = "africa-south1-a"
     image        = "debian-cloud/debian-11"
-    network      = "jenkins-test-vpc"
-    subnetwork   = "jenkins-test-subnetwork"
-    subnetwork_project = "shyamkprj"
+    network      = "vpc-learning-test-001"
+    subnetwork   = "subnet-learning-test-africa-south1-public-001"
+    subnetwork_project = "sumit-project-05032025"
     metadata_startup_script =  <<EOT
             #!/bin/bash
             sudo apt update
@@ -20,11 +20,11 @@ instances = {
   }
 "sumit-jenkins-slave-vm" = {
     machine_type = "e2-medium"
-    zone         = "northamerica-northeast1-a"
+    zone         = "africa-south1-a"
     image        = "debian-cloud/debian-11"
-    network      = "jenkins-test-vpc"
-    subnetwork   = "jenkins-test-subnetwork"
-    subnetwork_project = "shyamkprj"
+    network      = "vpc-learning-test-001"
+    subnetwork   = "subnet-learning-test-africa-south1-public-001"
+    subnetwork_project = "sumit-project-05032025"
     metadata_startup_script = <<EOT
             #!/bin/bash
             sudo apt update
@@ -32,4 +32,4 @@ instances = {
             EOT
   } 
 }
-project_id = "shyamkprj"
+project_id = "sumit-project-05032025"

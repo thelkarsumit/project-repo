@@ -1,3 +1,7 @@
+provider "google" {
+  project = var.project_id
+  credentials = file("../../../../../sumit-project-05032025-network-admin.json")
+}
 module "vm" {
   source = "../../../module/vm"
   for_each = var.instances

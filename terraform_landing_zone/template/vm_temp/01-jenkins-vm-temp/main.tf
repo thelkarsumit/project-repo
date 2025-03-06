@@ -1,6 +1,6 @@
 provider "google" {
   project = var.project_id
-  credentials = file("../../../../../sumit-project-05032025-network-admin.json")
+  credentials = file("../../../../../sumit-project-05032025-compute-admin.json")
 }
 module "Jenkins-VM" {
   source = "../../../module/vm"

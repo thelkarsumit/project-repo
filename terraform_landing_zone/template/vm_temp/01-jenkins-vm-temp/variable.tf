@@ -23,5 +23,5 @@ variable "network" {
   type = string
 }
 variable "metadata_startup_script" {
-  type = metadata_startup_script
+  type = string
 }
