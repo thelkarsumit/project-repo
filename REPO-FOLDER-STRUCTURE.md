@@ -12,8 +12,6 @@
 │   ├── README.md
 │   ├── ansible.cfg
 │   ├── documentation/
-│   ├── group_vars/
-│   ├── host_vars/
 │   ├── inventory/
 │   ├── playbooks/
 │   ├── roles/
@@ -217,7 +215,6 @@
 │   │   │   │   │   ├── js/
 │   │   │   │   ├── templates/
 │   │   │   ├── scripts/
-│   │   ├── 03-mig-loadbalancer-personal-expense-tracker/
 │   ├── python_usecase/
 ├── revision_plan/
 │   ├── documentation/
@@ -243,10 +240,13 @@
 │   │   ├── vm/
 │   │   ├── vpc/
 │   ├── template/
+│   │   ├── firewall_temp/
+│   │   │   ├── 01-iap-desktop-firewall-rule/
 │   │   ├── mig_temp/
 │   │   ├── vm_temp/
-│   │   │   ├── ansible_control_node_vm_temp/
-│   │   │   ├── ansible_managed_nodes_vm_temp/
-│   │   │   ├── jenkins_master_slave_temp/
+│   │   │   ├── 01-jenkins-vm-temp/
+│   │   │   ├── 02-jenkins_master_slave_temp/
+│   │   │   ├── 03-ansible_control_node_vm_temp/
+│   │   │   ├── 04-ansible_managed_nodes_vm_temp/
 │   │   ├── vpc_temp/
 ```
