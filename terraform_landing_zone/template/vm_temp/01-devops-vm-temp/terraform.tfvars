@@ -1,4 +1,4 @@
-project_id = "sumit-project-05032025"
+project_id = "sumit-project-05march"
 
 vm_name = "devops-learning-test-10march"
 machine_type = "e2-medium"
